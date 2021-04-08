@@ -36,6 +36,7 @@ export default class Signin extends React.Component {
   // Render the signin form.
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/' } };
+
     // if correct authentication, redirect to page instead of login screen
     if (this.state.redirectToReferer) {
       return <Redirect to={from}/>;
@@ -47,7 +48,7 @@ export default class Signin extends React.Component {
           <Grid textAlign="center" verticalAlign="middle" centered columns={2} relaxed='very' stackable>
             <Grid.Column>
               <Header as="h2" textAlign="center">
-              Login to your account
+              GitClub Login
               </Header>
               <Form onSubmit={this.submit}>
                 <Form.Input
@@ -70,7 +71,7 @@ export default class Signin extends React.Component {
                   type="password"
                   onChange={this.handleChange}
                 />
-                <Form.Button id="signin-form-submit" content="Login" primary/>
+                <Form.Button id="signin-form-submit" content="Login" basic color='green'/>
               </Form>
               {this.state.error === '' ? (
                 ''
@@ -83,8 +84,9 @@ export default class Signin extends React.Component {
               )}
             </Grid.Column>
             <Grid.Column verticalAlign='middle'>
+              <Header as="h2" textAlign="center">Join Us!<br/></Header>
               <Link to="/signup">
-                <Button content='Sign up' icon='signup' size='big' />
+                <Button content='Sign up' icon='signup' size='big' basic color='green'/>
               </Link>
             </Grid.Column>
           </Grid>
