@@ -20,12 +20,12 @@ class ListStuffAdmin extends React.Component {
       <Grid container columns='equal'>
         <Grid.Row>
           <Container>
-            <Header as="h2" textAlign="center" color='green'>
+            <Header as="h2" textAlign="center" >
               <Icon color='green' name='home'/>My Clubs</Header>
             <hr/></Container>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column width={4}>
+          <Grid.Column width={5}>
             <Card>
               <Image src='https://acmanoa.github.io/assets/img/officers/placehold.png' wrapped ui={false} />
               <Card.Content>
@@ -48,15 +48,14 @@ class ListStuffAdmin extends React.Component {
                 </a>
               </Card.Content>
               <Card.Content extra>
-                <div className='ui three buttons'>
-                  <Button basic color='green'>
-                Edit
+                <div className='ui two buttons'>
+                  <Button basic color='grey'>
+                    <Icon color='grey' name='info'/>
+                More Info
                   </Button>
                   <Button basic color='red'>
-                Delete
-                  </Button>
-                  <Button basic color='grey'>
-                    Leave
+                    <Icon color='red' name='delete'/>
+                Leave
                   </Button>
                 </div>
               </Card.Content>
@@ -99,14 +98,13 @@ class ListStuffAdmin extends React.Component {
                 </a>
               </Card.Content>
               <Card.Content extra>
-                <div className='ui three buttons'>
-                  <Button basic color='green'>
-                Edit
+                <div className='ui two buttons'>
+                  <Button basic color='grey'>
+                    <Icon color='grey' name='info'/>
+                    More Info
                   </Button>
                   <Button basic color='red'>
-                Delete
-                  </Button>
-                  <Button basic color='grey'>
+                    <Icon color='red' name='delete'/>
                     Leave
                   </Button>
                 </div>
