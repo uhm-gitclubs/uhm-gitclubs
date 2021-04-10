@@ -88,8 +88,6 @@ class Landing extends React.Component {
               </Header>
             </Grid.Column>
           </Grid>
-
-
           <Grid container columns='equal'>
             <Grid.Row>
               <Grid.Column width={5}>

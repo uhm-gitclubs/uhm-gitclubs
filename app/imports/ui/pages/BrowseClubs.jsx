@@ -1,13 +1,13 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Button, Card, Grid, Label, Image, Icon, Loader, Header, Container } from 'semantic-ui-react';
+import { Container, Header, Loader, Grid, Icon, Card, Image, Button, Label } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Stuffs } from '../../api/stuff/Stuff';
-// import StuffItemAdmin from '../components/StuffItemAdmin';
+// import StuffItem from '../components/StuffItem';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-class ListStuffAdmin extends React.Component {
+class BrowseClubs extends React.Component {
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
@@ -174,6 +174,55 @@ class ListStuffAdmin extends React.Component {
               </Card.Content>
             </Card>
           </Grid.Column>
+          <Grid.Column>
+            <Card>
+              <Image src='https://image.shutterstock.com/image-vector/sample-stamp-grunge-texture-vector-260nw-1389188336.jpg' wrapped ui={false} />
+              <Card.Content>
+                <Card.Header>New Club Template</Card.Header>
+                <Card.Meta>
+                  <span className='date'>Joined in mm/dd/yyyy</span>
+                </Card.Meta>
+                <Card.Meta>
+                  <span className='expiration'>Expires on mm/dd/yyyy</span>
+                </Card.Meta>
+                <Card.Description>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </Card.Description>
+              </Card.Content>
+              <Card.Content extra>
+                <a>
+                  <Icon name='user' />
+                  X Members
+                </a>
+              </Card.Content>
+              <Card.Content extra>
+                <div className='ui two buttons'>
+                  <Button basic color='grey'>
+                    <Icon color='grey' name='info'/>
+                    More Info
+                  </Button>
+                  <Button basic color='green'>
+                    <Icon color='green' name='plus circle'/>
+                    Join
+                  </Button>
+                </div>
+              </Card.Content>
+              <Card.Content>
+                <Label >
+                  Label 1
+                  <Icon name='delete' />
+                </Label>
+                <Label >
+                  label 2
+                  <Icon name='delete' />
+                </Label>
+                <Label >
+                  Label 3
+                  <Icon name='delete' />
+                </Label>
+              </Card.Content>
+            </Card>
+          </Grid.Column>
         </Grid.Row>
       </Grid>
     );
@@ -181,7 +230,7 @@ class ListStuffAdmin extends React.Component {
 }
 
 // Require an array of Stuff documents in the props.
-ListStuffAdmin.propTypes = {
+BrowseClubs.propTypes = {
   stuffs: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
@@ -189,7 +238,7 @@ ListStuffAdmin.propTypes = {
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Stuffs.adminPublicationName);
+  const subscription = Meteor.subscribe(Stuffs.userPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Stuff documents
@@ -198,4 +247,4 @@ export default withTracker(() => {
     stuffs,
     ready,
   };
-})(ListStuffAdmin);
+})(BrowseClubs);
