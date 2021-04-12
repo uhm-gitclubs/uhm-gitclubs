@@ -43,10 +43,33 @@ class Signup extends React.Component {
         <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
           <Grid.Column>
             <Header as="h2" textAlign="center">
-              Register your account
+              GitClub
+              <Header.Subheader>
+                Join your clubs in GitClub
+              </Header.Subheader>
             </Header>
             <Form onSubmit={this.submit}>
               <Segment stacked>
+                <Form.Group widths='equal'>
+                  <Form.Input
+                    label="First Name"
+                    id="signup-form-fistName"
+                    name="firstName"
+                    type="firstName"
+                    placeholder="First Name"
+                    required
+                    onChange={this.handleChange}
+                  />
+                  <Form.Input
+                    label="Last Name"
+                    id="signup-form-lastName"
+                    name="lastName"
+                    type="lastName"
+                    placeholder="Last Name"
+                    required
+                    onChange={this.handleChange}
+                  />
+                </Form.Group>
                 <Form.Input
                   label="Email"
                   id="signup-form-email"
@@ -55,6 +78,7 @@ class Signup extends React.Component {
                   name="email"
                   type="email"
                   placeholder="E-mail address"
+                  required
                   onChange={this.handleChange}
                 />
                 <Form.Input
@@ -65,9 +89,15 @@ class Signup extends React.Component {
                   name="password"
                   placeholder="Password"
                   type="password"
+                  required
                   onChange={this.handleChange}
                 />
-                <Form.Button id="signup-form-submit" content="Submit"/>
+                <Form.Checkbox
+                  inline
+                  label='I agree to the terms and conditions'
+                  required
+                />
+                <Form.Button id="signup-form-submit" content="Submit" basic color='green'/>
               </Segment>
             </Form>
             <Message>
