@@ -18,7 +18,7 @@ class Landing extends React.Component {
             <Grid.Column textAlign='center'>
               <Header as='h1' inverted>Are you a UHM student?</Header>
               <Header as='h4' inverted>Find your club and get into it!</Header>
-              <Link to="/list">
+              <Link to="/browse">
                 <Button animated color='black'>
                   <Button.Content visible> Browse Clubs</Button.Content>
                   <Button.Content hidden>
