@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, Image, Header, Icon, Button, Container, Statistic, Card, Label } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 /** A simple static component to render some text for the landing page. */
 class Landing extends React.Component {
@@ -17,12 +18,14 @@ class Landing extends React.Component {
             <Grid.Column textAlign='center'>
               <Header as='h1' inverted>Are you a UHM student?</Header>
               <Header as='h4' inverted>Find your club and get into it!</Header>
-              <Button animated color='black'>
-                <Button.Content visible> Browse Clubs</Button.Content>
-                <Button.Content hidden>
-                  <Icon name="arrow right"/>
-                </Button.Content>
-              </Button>
+              <Link to="/BrowseClubs">
+                <Button animated color='black'>
+                  <Button.Content visible> Browse Clubs</Button.Content>
+                  <Button.Content hidden>
+                    <Icon name="arrow right"/>
+                  </Button.Content>
+                </Button>
+              </Link>
             </Grid.Column>
           </Grid>
         </div>
