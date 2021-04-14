@@ -5,6 +5,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Stuffs } from '../../api/stuff/Stuff';
 //import StuffItem from '../components/StuffItem';
+import { Clubs } from '../../api/club/Clubs.js';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ListStuff extends React.Component {
@@ -22,7 +23,8 @@ class ListStuff extends React.Component {
           <Container>
             <Header as="h2" textAlign="center" >
               <Icon color='green' name='home'/>My Clubs</Header>
-            <hr/></Container>
+            <hr/>
+          </Container>
         </Grid.Row>
         <Grid.Row>
           <Grid.Column width={5}>
@@ -133,20 +135,20 @@ class ListStuff extends React.Component {
 
 // Require an array of Stuff documents in the props.
 ListStuff.propTypes = {
-  stuffs: PropTypes.array.isRequired,
+  clubs: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Stuffs.userPublicationName);
+  const subscription = Meteor.subscribe(Clubs.userPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Stuff documents
-  const stuffs = Stuffs.collection.find({}).fetch();
+  const clubs = Clubs.collection.find({}).fetch();
   return {
-    stuffs,
+    clubs,
     ready,
   };
 })(ListStuff);
