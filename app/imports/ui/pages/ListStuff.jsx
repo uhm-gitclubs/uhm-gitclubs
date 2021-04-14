@@ -3,8 +3,9 @@ import { Meteor } from 'meteor/meteor';
 import { Container, Header, Loader, Grid, Icon, Card, Image, Button, Label } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
-//import StuffItem from '../components/StuffItem';
+// import StuffItem from '../components/StuffItem';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ListStuff extends React.Component {
@@ -41,6 +42,18 @@ class ListStuff extends React.Component {
                   <p>We welcome students of all different backgrounds, interests, and skill levels to join our community and share our passion for computer science.</p>
                 </Card.Description>
               </Card.Content>
+              {Roles.userIsInRole(Meteor.userId(), 'clubModerator') ? (
+                [<Card.Content extra key = 'edit'>
+                  <div className='ui button'>
+                    <Button basic color='blue'>
+                      <Icon color='blue' name='pencil'/>
+                        Edit
+                    </Button>
+                  </div>
+                </Card.Content>,
+                ]
+              ) : ''}
+
               <Card.Content extra>
                 <a>
                   <Icon name='user' />
