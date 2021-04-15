@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 class Landing extends React.Component {
   render() {
     const gridStyle = { height: '500px' };
-    const gridStyle2 = { margin: '150px 0px 100px 0px' };
+    const gridStyle2 = { margin: '120px 0px 100px 0px' };
     const gridStyle3 = {
       margin: '150px 0px 0px 0px',
       padding: '50px 0px 0px 0px',
