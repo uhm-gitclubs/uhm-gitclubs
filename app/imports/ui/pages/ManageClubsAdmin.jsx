@@ -21,7 +21,7 @@ class ManageClubsAdmin extends React.Component {
         <Grid.Row>
           <Container>
             <Header as="h2" textAlign="center" >
-              <Icon color='green' name='search'/>Manage Clubs</Header>
+              <Icon color='green' name='cogs'/>Manage Clubs</Header>
             <hr/>
           </Container>
         </Grid.Row>
