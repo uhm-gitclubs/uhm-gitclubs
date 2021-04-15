@@ -19,7 +19,8 @@ class ClubsCollection {
       email: String,
       website: String,
       description: String,
-      tags: String,
+      tags: Array,
+      'tags.$': { type: String },
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
