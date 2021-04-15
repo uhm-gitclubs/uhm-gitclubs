@@ -35,7 +35,7 @@ BrowseClubs.propTypes = {
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
-  const subscription = Meteor.subscribe(Clubs.userPublicationName);
+  const subscription = Meteor.subscribe(Clubs.nonuserPublicationName);
   const ready = subscription.ready();
   const clubs = Clubs.collection.find({}).fetch();
   return {

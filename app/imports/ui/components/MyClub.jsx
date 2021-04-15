@@ -30,17 +30,20 @@ class Club extends React.Component {
               <Icon color='grey' name='info'/>
               More Info
             </Button>
-            <Button basic color='green'>
-              <Icon color='green' name='add circle'/>
-              Join
+            <Button basic color='red'>
+              <Icon color='red' name='close'/>
+              Leave
             </Button>
           </div>
         </Card.Content>
         <Card.Content extra>
-          {_.map(this.props.club.tags, (tag, index) => <Label key={index} color='green'>
-            {tag}
-            <Icon name='delete' />
-          </Label>)}
+          <Link to={`/edit/${this.props.club._id}`}>Edit</Link>
+        </Card.Content>
+        <Card.Content extra>
+            {_.map(this.props.club.tags, (tag, index) => <Label key={index} color='green'>
+              {tag}
+              <Icon name='delete' />
+            </Label>)}
         </Card.Content>
       </Card>
     );
