@@ -13,7 +13,7 @@ class MyClubs extends React.Component {
 
   open = () => this.setState({ open: true })
 
-  handleConfirm = () => this.setState({ result: swal('Success', '', 'success'), open: false })
+  handleConfirm = () => this.setState({ result: swal('Done!', '', 'success'), open: false })
 
   handleCancel = () => this.setState({ open: false })
 
@@ -72,7 +72,7 @@ class MyClubs extends React.Component {
                   </Button>
                   <Confirm
                     open={this.state.open}
-                    content='Are you sure you want to leave this club?'
+                    content='Are you sure you want to do this?'
                     cancelButton='Never mind'
                     confirmButton="Let's do it"
                     onCancel={this.handleCancel}
@@ -135,7 +135,7 @@ class MyClubs extends React.Component {
                   </Button>
                   <Confirm
                     open={this.state.open}
-                    content='Are you sure you want to leave this club?'
+                    content='Are you sure you want to do this?'
                     cancelButton='Never mind'
                     confirmButton="Let's do it"
                     onCancel={this.handleCancel}
