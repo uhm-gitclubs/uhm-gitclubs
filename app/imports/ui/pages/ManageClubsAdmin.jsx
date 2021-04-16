@@ -1,15 +1,17 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Button, Card, Grid, Label, Image, Icon, Loader, Header, Container, Modal, Confirm } from 'semantic-ui-react';
+import { Button, Card, Grid, Label, Image, Icon, Loader, Header, Divider, Transition, Container, Modal, Confirm } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Stuffs } from '../../api/stuff/Stuff';
 import swal from 'sweetalert';
+import { Stuffs } from '../../api/stuff/Stuff';
 // import StuffItemAdmin from '../components/StuffItemAdmin';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ManageClubsAdmin extends React.Component {
-  state = { open: false }
+  state = { open: false, visible: true }
+
+  toggleVisibility = () => this.setState((prevState) => ({ visible: !prevState.visible }))
 
   open = () => this.setState({ open: true })
 
@@ -20,10 +22,12 @@ class ManageClubsAdmin extends React.Component {
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+
   }
 
   // Render the page once subscriptions have been received.
   renderPage() {
+    const { visible } = this.state;
     return (
       <Grid container columns='equal'>
         <Grid.Row>
@@ -207,12 +211,16 @@ class ManageClubsAdmin extends React.Component {
                 </div>
               </Card.Content>
               <Card.Content>
-                <Label >
+                <Divider hidden />
+                <Transition visible={visible} animation='scale' duration={500}>
+                  <Label >
                     Label 1
-                  <Icon name='delete' />
-                </Label>
+                    <Icon name='delete' content={visible ? 'Hide' : 'Show'}
+                      onClick={this.toggleVisibility}/>
+                  </Label>
+                </Transition>
                 <Label >
-                    label 2
+                    Label 2
                   <Icon name='delete' />
                 </Label>
                 <Label >
