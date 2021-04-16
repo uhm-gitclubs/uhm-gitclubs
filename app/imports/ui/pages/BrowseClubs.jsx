@@ -1,13 +1,21 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Header, Loader, Grid, Icon, Card, Image, Button, Label } from 'semantic-ui-react';
+import { Container, Header, Loader, Grid, Modal, Icon, Card, Image, Button, Label, Confirm } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import swal from 'sweetalert';
 import { Stuffs } from '../../api/stuff/Stuff';
 // import StuffItem from '../components/StuffItem';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class BrowseClubs extends React.Component {
+  state = { open: false }
+
+  open = () => this.setState({ open: true })
+
+  handleConfirm = () => this.setState({ result: swal('Success', '', 'success'), open: false })
+
+  handleCancel = () => this.setState({ open: false })
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
@@ -49,14 +57,27 @@ class BrowseClubs extends React.Component {
               </Card.Content>
               <Card.Content extra>
                 <div className='ui two buttons'>
-                  <Button basic color='grey'>
-                    <Icon color='grey' name='info'/>
-                      More Info
+                  <Modal
+                    trigger={<Button basic color='grey' >
+                      <Icon color='grey' name='info'/>
+                        More Info
+                    </Button>}
+                    header='More Info'
+                    content='Enter more specific details of club here.'
+                    actions={[{ key: 'done', content: 'Done', positive: true }]}
+                  />
+                  <Button basic color='red' onClick={this.open}>
+                    <Icon color='red' name='delete'/>
+                    Leave
                   </Button>
-                  <Button basic color='green'>
-                    <Icon color='green' name='plus circle'/>
-                      Join
-                  </Button>
+                  <Confirm
+                    open={this.state.open}
+                    content='Are you sure you want to leave this club?'
+                    cancelButton='Never mind'
+                    confirmButton="Let's do it"
+                    onCancel={this.handleCancel}
+                    onConfirm={this.handleConfirm}
+                  />
                 </div>
               </Card.Content>
               <Card.Content>
@@ -99,14 +120,27 @@ class BrowseClubs extends React.Component {
               </Card.Content>
               <Card.Content extra>
                 <div className='ui two buttons'>
-                  <Button basic color='grey'>
-                    <Icon color='grey' name='info'/>
-                      More Info
+                  <Modal
+                    trigger={<Button basic color='grey' >
+                      <Icon color='grey' name='info'/>
+                        More Info
+                    </Button>}
+                    header='More Info'
+                    content='Enter more specific details of club here.'
+                    actions={[{ key: 'done', content: 'Done', positive: true }]}
+                  />
+                  <Button basic color='red' onClick={this.open}>
+                    <Icon color='red' name='delete'/>
+                    Leave
                   </Button>
-                  <Button basic color='green'>
-                    <Icon color='green' name='plus circle'/>
-                      Join
-                  </Button>
+                  <Confirm
+                    open={this.state.open}
+                    content='Are you sure you want to leave this club?'
+                    cancelButton='Never mind'
+                    confirmButton="Let's do it"
+                    onCancel={this.handleCancel}
+                    onConfirm={this.handleConfirm}
+                  />
                 </div>
               </Card.Content>
               <Card.Content>
@@ -148,14 +182,27 @@ class BrowseClubs extends React.Component {
               </Card.Content>
               <Card.Content extra>
                 <div className='ui two buttons'>
-                  <Button basic color='grey'>
-                    <Icon color='grey' name='info'/>
-                      More Info
-                  </Button>
-                  <Button basic color='green'>
+                  <Modal
+                    trigger={<Button basic color='grey' >
+                      <Icon color='grey' name='info'/>
+                        More Info
+                    </Button>}
+                    header='More Info'
+                    content='Enter more specific details of club here.'
+                    actions={[{ key: 'done', content: 'Done', positive: true }]}
+                  />
+                  <Button basic color='green' onClick={this.open}>
                     <Icon color='green' name='plus circle'/>
-                      Join
+                    Join
                   </Button>
+                  <Confirm
+                    open={this.state.open}
+                    content='Are you sure you want to join this club?'
+                    cancelButton='Never mind'
+                    confirmButton="Let's do it"
+                    onCancel={this.handleCancel}
+                    onConfirm={this.handleConfirm}
+                  />
                 </div>
               </Card.Content>
               <Card.Content>
@@ -197,14 +244,27 @@ class BrowseClubs extends React.Component {
               </Card.Content>
               <Card.Content extra>
                 <div className='ui two buttons'>
-                  <Button basic color='grey'>
-                    <Icon color='grey' name='info'/>
-                    More Info
-                  </Button>
-                  <Button basic color='green'>
+                  <Modal
+                    trigger={<Button basic color='grey' >
+                      <Icon color='grey' name='info'/>
+                        More Info
+                    </Button>}
+                    header='More Info'
+                    content='Enter more specific details of club here.'
+                    actions={[{ key: 'done', content: 'Done', positive: true }]}
+                  />
+                  <Button basic color='green' onClick={this.open}>
                     <Icon color='green' name='plus circle'/>
                     Join
                   </Button>
+                  <Confirm
+                    open={this.state.open}
+                    content='Are you sure you want to join this club?'
+                    cancelButton='Never mind'
+                    confirmButton="Let's do it"
+                    onCancel={this.handleCancel}
+                    onConfirm={this.handleConfirm}
+                  />
                 </div>
               </Card.Content>
               <Card.Content>
