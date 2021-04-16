@@ -11,8 +11,9 @@ Meteor.publish(Clubs.nonuserPublicationName, function () {
 // If logged in, then publish documents owned by this user.
 Meteor.publish(Clubs.userPublicationName, function () {
   if (this.userId) {
-    const joined = Meteor.users.findOne(this.userId).joined;
-    return Clubs.collection.find({ name: joined });
+    const joined = Meteor.users.findOne(this.userId).profile.joined;
+    console.log(joined[0]);
+    return Clubs.collection.find({ clubName: joined[0] });
   }
   return this.ready();
 });
