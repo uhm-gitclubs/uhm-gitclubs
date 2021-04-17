@@ -4,8 +4,8 @@
       "email": "admin@foo.com",
       "password": "changeme",
       "role": "siteAdmin",
-      "joined": ["Association for Computing Machinery at the University of Hawaii at Manoa"],
-      "moderator": ["Association for Computing Machinery at the University of Hawaii at Manoa", "Anime and Manga Society"],
+      "joined": ["Association for Computing Machinery at the University of Hawaii at Manoa", "Anime and Manga Society"],
+      "moderator": ["Association for Computing Machinery at the University of Hawaii at Manoa"],
       "interests": []
     },
     {

@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
+import { _ } from 'meteor/underscore';
 import { Clubs } from '../../api/club/Clubs';
 
 // Non-User-level publication.
@@ -13,7 +14,7 @@ Meteor.publish(Clubs.userPublicationName, function () {
   if (this.userId) {
     const joined = Meteor.users.findOne(this.userId).profile.joined;
     console.log(joined[0]);
-    return Clubs.collection.find({ clubName: joined[0] });
+    return Clubs.collection.find({ clubName: joined[0] }, { clubName: joined[1] });
   }
   return this.ready();
 });
