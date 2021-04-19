@@ -15,7 +15,7 @@ class ClubsCollection {
     this.schema = new SimpleSchema({
       clubName: String,
       image: String,
-      moderator: String,
+      // moderator: String,
       email: String,
       website: String,
       description: String,
