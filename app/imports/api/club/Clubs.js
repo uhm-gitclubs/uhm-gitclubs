@@ -21,15 +21,12 @@ class ClubsCollection {
       description: String,
       tags: Array,
       'tags.$': { type: String },
-      joined: Array,
-      'joined.$': { type: String },
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
     // Define names for publications and subscriptions
     this.nonuserPublicationName = `${this.name}.publication.nonuser`;
     this.userPublicationName = `${this.name}.publication.user`;
-    this.moderatorPublicationName = `${this.name}.publication.user`;
     this.adminPublicationName = `${this.name}.publication.siteAdmin`;
   }
 }
