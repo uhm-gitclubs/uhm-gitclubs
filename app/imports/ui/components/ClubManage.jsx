@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image, Label, Icon, Button, Modal, Confirm, Transition } from 'semantic-ui-react';
+import { Card, Image, Label, Icon, Button, Modal, Transition } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { _ } from 'meteor/underscore';
@@ -56,13 +56,13 @@ class Club extends React.Component {
           </div>
         </Card.Content>
         <Card.Content extra>
-          <Transition visible={visible} animation='scale' duration={500}>
-            {_.map(this.props.club.tags, (tag, index) => <Label key={index} color='green'>
+          {_.map(this.props.club.tags, (tag, index) => <Transition visible={visible} animation='scale' duration={500}>
+            <Label key={index} color='green'>
               {tag}
               <Icon name='delete' content={visible ? 'Hide' : 'Show'}
                 onClick={this.toggleVisibility}/>
-            </Label>)}
-          </Transition>
+            </Label>
+          </Transition>)}
         </Card.Content>
       </Card>
     );
