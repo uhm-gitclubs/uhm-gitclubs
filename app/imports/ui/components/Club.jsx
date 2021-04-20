@@ -39,7 +39,6 @@ class Club extends React.Component {
         <Card.Content extra>
           {_.map(this.props.club.tags, (tag, index) => <Label key={index} color='green'>
             {tag}
-            <Icon name='delete' />
           </Label>)}
         </Card.Content>
       </Card>
