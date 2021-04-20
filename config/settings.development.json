@@ -4,31 +4,46 @@
       "email": "admin@foo.com",
       "password": "changeme",
       "role": "siteAdmin",
-      "clubs": {
-        "joined": ["Association for Computing Machinery at the University of Hawaii at Manoa"],
-        "moderator": ["Association for Computing Machinery at the University of Hawaii at Manoa"]
-      },
+      "joined": ["Association for Computing Machinery at the University of Hawaii at Manoa", "Anime and Manga Society"],
+      "moderator": ["Association for Computing Machinery at the University of Hawaii at Manoa"],
       "interests": []
     },
     {
       "email": "john@foo.com",
       "password": "changeme",
       "role": "clubModerator",
-      "clubs": {
-        "joined": ["Association for Computing Machinery at the University of Hawaii at Manoa"],
-        "moderator": []
-      },
+      "joined": ["Association for Computing Machinery at the University of Hawaii at Manoa"],
+      "moderator": [],
       "interests": []
     },
     {
       "email": "jenny@foo.com",
       "password": "changeme",
-      "clubs": {
-        "joined": [],
-        "moderator": []
-      },
+      "joined": [],
+      "moderator": [],
       "interests": []
     }
   ],
-  "loadAssetsFile": true
+  "defaultClubs": [
+    {
+      "clubName": "Association for Computing Machinery at the University of Hawaii at Manoa",
+      "image": "https://acmanoa.github.io/assets/img/officers/placehold.png",
+      "moderator": "admin@foo.com",
+      "email": "admin@foo.com",
+      "website": "https://acmanoa.github.io/",
+      "description": "We, the Association for Computing Machinery at UH Manoa (ACManoa/ACM), are the largest computer science student organization at the University of Hawaii at Manoa.",
+      "tags": ["technology"],
+      "joined": ["admin@foo.com"]
+    },
+    {
+      "clubName": "Anime and Manga Society",
+      "image": "https://pbs.twimg.com/profile_images/1119496798874136576/3ao966FS.jpg",
+      "moderator": "john@foo.com",
+      "email": "john@foo.com",
+      "website": "https://www.amsmanoa.org/",
+      "description": "We are an open community of people who love to watch Japanese anime, read manga, have an interest in gaming, cosplay, Japanese culture, western comics/animation, or anything related.",
+      "tags": ["social", "anime", "manga"],
+      "joined": ["admin@foo.com", "john@foo.com"]
+    }
+  ]
 }
