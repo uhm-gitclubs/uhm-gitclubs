@@ -31,7 +31,7 @@ class ListStuffAdmin extends React.Component {
 
 // Require an array of Stuff documents in the props.
 ListStuffAdmin.propTypes = {
-  stuffs: PropTypes.array.isRequired,
+  clubs: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -42,9 +42,9 @@ export default withTracker(() => {
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Stuff documents
-  const stuffs = Stuffs.collection.find({}).fetch();
+  const clubs = Clubs.collection.find({}).fetch();
   return {
-    stuffs,
+    clubs,
     ready,
   };
 })(ListStuffAdmin);
