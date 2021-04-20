@@ -22,7 +22,7 @@ class ListStuffAdmin extends React.Component {
         <Header as="h2" textAlign="center" >
           <Icon color='green' name='search'/>My Clubs</Header>
         <hr/>
-        <Card.Group>
+        <Card.Group centered>
           {this.props.clubs.map((club, index) => <ClubManage key={index} club={club}/>)}
         </Card.Group>
       </Container>
@@ -39,7 +39,7 @@ ListStuffAdmin.propTypes = {
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Clubs.adminPublicationName);
+  const subscription = Meteor.subscribe(Clubs.moderatorPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Stuff documents

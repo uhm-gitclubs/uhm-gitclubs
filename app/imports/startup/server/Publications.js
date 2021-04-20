@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { _ } from 'meteor/underscore';
 import { Clubs } from '../../api/club/Clubs';
+import { Profiles } from '../../api/profile/Profiles';
 
 // Non-User-level publication.
 Meteor.publish(Clubs.nonuserPublicationName, function () {
@@ -12,9 +13,18 @@ Meteor.publish(Clubs.nonuserPublicationName, function () {
 // If logged in, then publish documents owned by this user.
 Meteor.publish(Clubs.userPublicationName, function () {
   if (this.userId) {
-    const joined = Meteor.users.findOne(this.userId).profile.joined;
-    console.log(joined[0]);
-    return Clubs.collection.find({ clubName: joined[0] }, { clubName: joined[1] });
+    const joined = Meteor.users.findOne(this.userId).username;
+    return Clubs.collection.find({ joined: joined });
+  }
+  return this.ready();
+});
+
+// Moderator-level publication.
+// If logged in, then publish documents owned by this user.
+Meteor.publish(Clubs.moderatorPublicationName, function () {
+  if (this.userId) {
+    const moderator = Meteor.users.findOne(this.userId).username;
+    return Clubs.collection.find({ moderator: moderator });
   }
   return this.ready();
 });

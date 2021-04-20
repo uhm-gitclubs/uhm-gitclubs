@@ -32,7 +32,8 @@
       "email": "admin@foo.com",
       "website": "https://acmanoa.github.io/",
       "description": "We, the Association for Computing Machinery at UH Manoa (ACManoa/ACM), are the largest computer science student organization at the University of Hawaii at Manoa.",
-      "tags": ["technology"]
+      "tags": ["technology"],
+      "joined": ["admin@foo.com"]
     },
     {
       "clubName": "Anime and Manga Society",
@@ -41,7 +42,8 @@
       "email": "john@foo.com",
       "website": "https://www.amsmanoa.org/",
       "description": "We are an open community of people who love to watch Japanese anime, read manga, have an interest in gaming, cosplay, Japanese culture, western comics/animation, or anything related.",
-      "tags": ["social", "anime", "manga"]
+      "tags": ["social", "anime", "manga"],
+      "joined": ["admin@foo.com", "john@foo.com"]
     }
   ]
 }

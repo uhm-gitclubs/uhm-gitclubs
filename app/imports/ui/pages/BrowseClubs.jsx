@@ -19,7 +19,7 @@ class BrowseClubs extends React.Component {
         <Header as="h2" textAlign="center" >
           <Icon color='green' name='search'/>Browse Clubs</Header>
         <hr/>
-        <Card.Group>
+        <Card.Group centered>
           {this.props.clubs.map((club, index) => <Club key={index} club={club}/>)}
         </Card.Group>
       </Container>
