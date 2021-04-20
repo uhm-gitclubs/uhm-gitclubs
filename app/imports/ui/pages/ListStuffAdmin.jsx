@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Button, Card, Grid, Label, Image, Icon, Loader, Header, Container } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Clubs } from '../../api/club/CLubs';
+import { Clubs } from '../../api/club/Clubs';
 import ClubManage from '../components/ClubManage';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
