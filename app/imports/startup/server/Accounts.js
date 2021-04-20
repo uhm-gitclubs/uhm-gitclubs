@@ -4,15 +4,13 @@ import { Roles } from 'meteor/alanning:roles';
 
 /* eslint-disable no-console */
 
-function createUser(email, password, role, joined, moderator, interests) {
+function createUser(email, password, role, interests) {
   console.log(`  Creating user ${email}.`);
   const userID = Accounts.createUser({
     username: email,
     email: email,
     password: password,
     profile: {
-      joined: joined,
-      moderator: moderator,
       interests: interests,
     },
   });
@@ -26,7 +24,8 @@ function createUser(email, password, role, joined, moderator, interests) {
 if (Meteor.users.find().count() === 0) {
   if (Meteor.settings.defaultAccounts) {
     console.log('Creating the default user(s)');
-    Meteor.settings.defaultAccounts.map(({ email, password, role, joined, moderator, interests }) => createUser(email, password, role, joined, moderator, interests));
+    Meteor.settings.defaultAccounts.map(({ email, password, role, clubs, interests }) => createUser(email, password, role, clubs, interests));
+    Meteor.settings.defaultAccounts.map(({ email, password, role, interests }) => createUser(email, password, role, interests));
   } else {
     console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
   }

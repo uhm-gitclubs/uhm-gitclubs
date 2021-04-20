@@ -4,23 +4,29 @@
       "email": "admin@foo.com",
       "password": "changeme",
       "role": "siteAdmin",
-      "joined": ["Association for Computing Machinery at the University of Hawaii at Manoa", "Anime and Manga Society"],
-      "moderator": ["Association for Computing Machinery at the University of Hawaii at Manoa"],
+      "clubs": {
+        "joined": ["Association for Computing Machinery at the University of Hawaii at Manoa"],
+        "moderator": ["Association for Computing Machinery at the University of Hawaii at Manoa"]
+      },
       "interests": []
     },
     {
       "email": "john@foo.com",
       "password": "changeme",
       "role": "clubModerator",
-      "joined": ["Association for Computing Machinery at the University of Hawaii at Manoa"],
-      "moderator": [],
+      "clubs": {
+        "joined": ["Association for Computing Machinery at the University of Hawaii at Manoa"],
+        "moderator": []
+      },
       "interests": []
     },
     {
       "email": "jenny@foo.com",
       "password": "changeme",
-      "joined": [],
-      "moderator": [],
+      "clubs": {
+        "joined": [],
+        "moderator": []
+      },
       "interests": []
     }
   ],
