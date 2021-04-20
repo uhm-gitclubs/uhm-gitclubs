@@ -11,8 +11,18 @@ Meteor.publish(Clubs.nonuserPublicationName, function () {
 // If logged in, then publish documents owned by this user.
 Meteor.publish(Clubs.userPublicationName, function () {
   if (this.userId) {
-    const joined = Meteor.users.findOne(this.userId).joined;
-    return Clubs.collection.find({ name: joined });
+    const joined = Meteor.users.findOne(this.userId).username;
+    return Clubs.collection.find({ joined: joined });
+  }
+  return this.ready();
+});
+
+// Moderator-level publication.
+// If logged in, then publish documents owned by this user.
+Meteor.publish(Clubs.moderatorPublicationName, function () {
+  if (this.userId) {
+    const moderator = Meteor.users.findOne(this.userId).username;
+    return Clubs.collection.find({ moderator: moderator });
   }
   return this.ready();
 });
