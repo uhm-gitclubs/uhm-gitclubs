@@ -9,7 +9,7 @@ class Footer extends React.Component {
       <footer>
         <div style={divStyle} className="ui center aligned container">
           <hr />
-          <Image size='tiny' centered circular src="/images/gitclubs-logo.png" /> <br />
+          <Image size='tiny' centered circular src="/images/uhm-gitclubs-logo-final.png" /> <br />
               Department of Information and Computer Sciences <br />
               University of Hawaii<br />
               Honolulu, HI 96822 <br />
