@@ -10,8 +10,8 @@
         "academic",
         "professional"
       ],
-      "moderator": [],
-      "joined": []
+      "moderator": ["admin@foo.com"],
+      "joined": ["admin@foo.com", "john@foo.com"]
     },
     {
       "clubName": "American Association of University Women",

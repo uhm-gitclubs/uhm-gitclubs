@@ -59,12 +59,8 @@ class Club extends React.Component {
           </div>
         </Card.Content>
         <Card.Content extra>
-          <Link to={`/edit/${this.props.club._id}`}>Edit</Link>
-        </Card.Content>
-        <Card.Content extra>
           {_.map(this.props.club.tags, (tag, index) => <Label key={index} color='green'>
             {tag}
-            <Icon name='delete' />
           </Label>)}
         </Card.Content>
       </Card>
