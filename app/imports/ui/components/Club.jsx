@@ -2,7 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Card, Image, Label, Icon, Button, Popup, Modal } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { _ } from 'meteor/underscore';
 import { Clubs } from '../../api/club/Clubs';
 
@@ -25,17 +25,24 @@ class Club extends React.Component {
   }
 
   isJoined() {
-    const user = Meteor.user().username;
-    const joined = this.props.club.joined;
-    if (joined.includes(user) === true) {
-      return true;
+    try {
+      const user = Meteor.user().username;
+      const joined = this.props.club.joined;
+      if (joined.includes(user) === true) {
+        return true;
+      }
+      return false;
+    } catch (err) {
+      return false;
     }
-    return false;
   }
 
   joinClub() {
     const user = Meteor.user().username;
     const joined = this.props.club.joined;
+    if (user === undefined) {
+      <Link to={/signin/}/>;
+    }
     if (joined.includes(user) === false) {
       joined.push(user);
     }
