@@ -21,7 +21,7 @@ class Club extends React.Component {
         <Card.Content extra>
           <a>
             <Icon name='user' />
-            202 Members
+            {this.props.club.joined.length} Members
           </a>
         </Card.Content>
         <Card.Content extra>

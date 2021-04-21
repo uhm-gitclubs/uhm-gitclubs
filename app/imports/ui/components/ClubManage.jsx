@@ -4,12 +4,18 @@ import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { _ } from 'meteor/underscore';
 import swal from 'sweetalert';
+import { Clubs } from '../../api/club/Clubs';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Club extends React.Component {
   state = { open: false, visible: true }
 
-  toggleVisibility = () => this.setState((prevState) => ({ visible: !prevState.visible }))
+  deleteTag(target) {
+    let tags = this.props.club.tags;
+    tags[target] = tags[0];
+    tags.pop();
+    Clubs.collection.update(this.props.club._id, { $set: { "tags" : tags } } );
+  }
 
   open = () => this.setState({ open: true })
 
@@ -33,7 +39,7 @@ class Club extends React.Component {
         <Card.Content extra>
           <a>
             <Icon name='user' />
-            202 Members
+            {this.props.club.joined.length} Members
           </a>
         </Card.Content>
         <Card.Content extra>
@@ -56,13 +62,12 @@ class Club extends React.Component {
           </div>
         </Card.Content>
         <Card.Content extra>
-          {_.map(this.props.club.tags, (tag, index) => <Transition visible={visible} animation='scale' duration={500}>
+          {_.map(this.props.club.tags, (tag, index) =>
             <Label key={index} color='green'>
               {tag}
-              <Icon name='delete' content={visible ? 'Hide' : 'Show'}
-                onClick={this.toggleVisibility}/>
+              <Icon name='delete' onClick={() => this.deleteTag(index)}/>
             </Label>
-          </Transition>)}
+          )}
         </Card.Content>
       </Card>
     );
