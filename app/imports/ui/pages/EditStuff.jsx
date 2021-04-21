@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
 import swal from 'sweetalert';
-import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, HiddenField, SubmitField, TextField, LongTextField } from 'uniforms-semantic';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -15,8 +15,8 @@ class EditStuff extends React.Component {
 
   // On successful submit, insert the data.
   submit(data) {
-    const { name, quantity, condition, _id } = data;
-    Stuffs.collection.update(_id, { $set: { name, quantity, condition } }, (error) => (error ?
+    const { name, image, moderator, email, website, description, tags, _id } = data;
+    Stuffs.collection.update(_id, { $set: { name, image, moderator, email, website, description, tags } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
   }
@@ -31,12 +31,15 @@ class EditStuff extends React.Component {
     return (
       <Grid container centered>
         <Grid.Column>
-          <Header as="h2" textAlign="center">Edit Stuff</Header>
+          <Header as="h2" textAlign="center">Edit Clubs</Header>
           <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
             <Segment>
               <TextField name='name'/>
-              <NumField name='quantity' decimal={false}/>
-              <SelectField name='condition'/>
+              <TextField name='image'/>
+              <TextField name='moderator'/>
+              <TextField name='email'/>
+              <TextField name='website'/>
+              <LongTextField name='description'/>
               <SubmitField value='Submit'/>
               <ErrorsField/>
               <HiddenField name='owner' />
