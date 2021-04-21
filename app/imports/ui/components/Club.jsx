@@ -1,11 +1,32 @@
 import React from 'react';
-import { Card, Image, Label, Icon, Button } from 'semantic-ui-react';
+import { Meteor } from 'meteor/meteor';
+import { Card, Image, Label, Icon, Button, Popup } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { _ } from 'meteor/underscore';
+import { Clubs } from '../../api/club/Clubs';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Club extends React.Component {
+  joinClub() {
+    const user = Meteor.users.findOne(this.userId).username;
+    const joined = this.props.club.joined;
+    let i = 0;
+    let join = false;
+    while (i < joined.length) {
+      if (joined[i] === user) {
+        join = true;
+      }
+      i++;
+    }
+    if (join === true) {
+      <Popup content='You already joined this club!'/>;
+    } else {
+      joined.push(user);
+    }
+    Clubs.collection.update(this.props.club._id, { $set: { 'joined': joined } });
+  }
+
   render() {
     return (
       <Card>
@@ -30,7 +51,7 @@ class Club extends React.Component {
               <Icon color='grey' name='info'/>
               More Info
             </Button>
-            <Button basic color='green'>
+            <Button basic color='green' onClick={ this.joinClub() }>
               <Icon color='green' name='add circle'/>
               Join
             </Button>
