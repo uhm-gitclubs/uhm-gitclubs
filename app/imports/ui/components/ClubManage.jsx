@@ -14,7 +14,7 @@ class Club extends React.Component {
     let tags = this.props.club.tags;
     tags[target] = tags[0];
     tags.pop();
-    Clubs.collection.update(this.props.club._id, { $set: { "tags" : tags } } );
+    Clubs.collection.update(this.props.club._id, { $set: { 'tags': tags } });
   }
 
   open = () => this.setState({ open: true })
@@ -49,7 +49,7 @@ class Club extends React.Component {
                 <Icon color='grey' name='info'/>
                   More Info
               </Button>}
-              header='More Info'
+              header={this.props.club.clubName}
               content='Enter more specific details of club here.'
               actions={[{ key: 'done', content: 'Done', positive: true }]}
             />
@@ -62,12 +62,10 @@ class Club extends React.Component {
           </div>
         </Card.Content>
         <Card.Content extra>
-          {_.map(this.props.club.tags, (tag, index) =>
-            <Label key={index} color='green'>
-              {tag}
-              <Icon name='delete' onClick={() => this.deleteTag(index)}/>
-            </Label>
-          )}
+          {_.map(this.props.club.tags, (tag, index) => <Label key={index} color='green'>
+            {tag}
+            <Icon name='delete' onClick={() => this.deleteTag(index)}/>
+          </Label>)}
         </Card.Content>
       </Card>
     );
