@@ -51,7 +51,7 @@ class Club extends React.Component {
               <Icon color='grey' name='info'/>
               More Info
             </Button>
-            <Button basic color='green' onClick={ this.joinClub() }>
+            <Button basic color='green' onClick={ () => this.joinClub() }>
               <Icon color='green' name='add circle'/>
               Join
             </Button>
