@@ -1,20 +1,39 @@
 import React from 'react';
 import { Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { Stuffs } from '../../api/stuff/Stuff';
+import MultiSelectField from '../forms/controllers/MultiSelectField';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
+  clubName: String,
+  image: String,
+  // moderator: String,
+  email: String,
+  website: String,
+  description: String,
+  tags: { // need to use multiselect field for this
+    type: String,
+    allowedValues: ['Computing', 'Culture', 'Fitness', 'Academic', 'Professional', 'Sports', 'Leisure', 'Political', 'Sorority', 'Fraternity', 'Honorary Society'],
+    /*
+  'tags.$': { type: String },
+  'Club Name': String,
+  'Image URL': String,
+  'Club Contact Email': String,
+  'Club Website URL': String,
+  'Club Description': String,
+  'Tags (use multiselect field from bowfolios)': String,
   name: String,
   quantity: Number,
   condition: {
     type: String,
     allowedValues: ['excellent', 'good', 'fair', 'poor'],
     defaultValue: 'good',
+*/
   },
 });
 
@@ -47,9 +66,12 @@ class CreateClubs extends React.Component {
           <Header as="h2" textAlign="center">Create Clubs</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
-              <TextField name='name'/>
-              <NumField name='quantity' decimal={false}/>
-              <SelectField name='condition'/>
+              <TextField name='clubName' placeholder={'Name of the Club'}/>
+              <TextField name='image' placeholder={'URL to the image'}/>
+              <TextField name='email' placeholder={'Primary contact email'}/>
+              <TextField name='website' placeholder={'www.example.com'}/>
+              <LongTextField name='description' placeholder={'What members can expect from the club'}/>
+              <MultiSelectField name='tags' placeholder={'Click to open'}/>
               <SubmitField value='Submit'/>
               <ErrorsField/>
             </Segment>
