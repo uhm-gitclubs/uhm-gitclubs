@@ -2,29 +2,44 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Card, Image, Label, Icon, Button, Popup, Modal } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { _ } from 'meteor/underscore';
 import { Clubs } from '../../api/club/Clubs';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Club extends React.Component {
-  joinClub() {
-    const user = Meteor.users.findOne(this.userId).username;
+
+  state = { isOpen: false }
+
+  handleOpen = () => {
+    this.setState({ isOpen: true });
+
+    this.timeout = setTimeout(() => {
+      this.setState({ isOpen: false });
+    }, 500);
+  }
+
+  handleClose = () => {
+    this.setState({ isOpen: false });
+    clearTimeout(this.timeout);
+  }
+
+  isJoined() {
+    const user = Meteor.user().username;
     const joined = this.props.club.joined;
-    let i = 0;
-    let join = false;
-    while (i < joined.length) {
-      if (joined[i] === user) {
-        join = true;
-      }
-      i++;
+    if (joined.includes(user) === true) {
+      return true;
     }
-    if (join === true) {
-      <Popup content='You already joined this club!'/>;
-    } else {
+    return false;
+  }
+
+  joinClub() {
+    const user = Meteor.user().username;
+    const joined = this.props.club.joined;
+    if (joined.includes(user) === false) {
       joined.push(user);
     }
-    Clubs.collection.update(this.props.club._id, { $set: { 'joined': joined } });
+    Clubs.collection.update(this.props.club._id, { $set: { joined: joined } });
   }
 
   render() {
@@ -56,10 +71,19 @@ class Club extends React.Component {
               content='Enter more specific details of club here.'
               actions={[{ key: 'done', content: 'Done', positive: true }]}
             />
-            <Button basic color='green' onClick={ () => this.joinClub() }>
-              <Icon color='green' name='add circle'/>
-              Join
-            </Button>
+            <Popup
+              trigger={<Button disabled={this.isJoined()} basic color='green' onClick={ () => this.joinClub() }>
+                <Icon color='green' name='add circle'/>
+                Join
+              </Button>}
+              content="welcome!"
+              on='click'
+              open={this.state.isOpen}
+              onClose={this.handleClose}
+              onOpen={this.handleOpen}
+              position='top center'
+            />
+
           </div>
         </Card.Content>
         <Card.Content extra>
