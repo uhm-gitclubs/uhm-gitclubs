@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Card, Image, Label, Icon, Button, Popup } from 'semantic-ui-react';
+import { Card, Image, Label, Icon, Button, Popup, Modal } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { _ } from 'meteor/underscore';
@@ -47,10 +47,15 @@ class Club extends React.Component {
         </Card.Content>
         <Card.Content extra>
           <div className='ui two buttons'>
-            <Button basic color='grey'>
-              <Icon color='grey' name='info'/>
-              More Info
-            </Button>
+            <Modal
+              trigger={<Button basic color='grey' >
+                <Icon color='grey' name='info'/>
+                More Info
+              </Button>}
+              header='More Info'
+              content='Enter more specific details of club here.'
+              actions={[{ key: 'done', content: 'Done', positive: true }]}
+            />
             <Button basic color='green' onClick={ () => this.joinClub() }>
               <Icon color='green' name='add circle'/>
               Join
