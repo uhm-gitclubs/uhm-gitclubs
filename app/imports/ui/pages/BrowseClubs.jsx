@@ -1,34 +1,66 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Header, Icon, Card, Loader } from 'semantic-ui-react';
+import { Container, Header, Icon, Card, Loader, Input } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import Club from '../components/Club';
 import { Clubs } from '../../api/club/Clubs';
 
-/** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
+/** Renders a container of clubs that are searched for. Use <Club> to render each card. */
 class BrowseClubs extends React.Component {
-  state = { open: false }
 
-  open = () => this.setState({ open: true })
+  constructor() {
+    super();
+    this.state = {
+      search: '',
+      value: '',
+    };
+    this.updateSearch = this.updateSearch.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
 
-  handleConfirm = () => this.setState({ result: swal('Done!', '', 'success'), open: false })
+  updateSearch(event) {
+    this.setState({ value: event.target.value });
+  }
 
-  handleCancel = () => this.setState({ open: false })
+  // allows enter to be pressed in order to search
+  handleClick(e) {
+    if (e.key === 'Enter') {
+      this.setState({ search: this.state.value });
+    }
+  }
 
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
   renderPage() {
+    const searchedClub = this.props.clubs.filter(
+      (club) => (club.clubName.toLowerCase().indexOf(this.state.search.toLowerCase())) !== -1 ||
+          (club.tags.join('\n').toLowerCase().indexOf(this.state.search.toLowerCase())) !== -1,
+    );
+
     return (
       <Container>
-        <Header as="h2" textAlign="center" >
-          <Icon color='green' name='search'/>Browse Clubs</Header>
+        <Header as="h2" textAlign="center">
+          <Icon color='green' name='search'/>Browse Clubs
+        </Header>
         <hr/>
-        <Card.Group centered>
-          {this.props.clubs.map((club, index) => <Club key={index} club={club}/>)}
-        </Card.Group>
+        <Input
+          fluid
+          placeholder='Search for club'
+          type='text'
+          value={this.state.value}
+          onChange={this.updateSearch}
+          onKeyPress={this.handleClick}
+          icon='search'
+        />
+        <br/>
+        {searchedClub.length === 0 ? (<p>No clubs found</p>) :
+          (<Card.Group centered>
+            {searchedClub.map((club) => <Club key={club._id} club={club}/>)}
+          </Card.Group>)
+        }
       </Container>
     );
   }
