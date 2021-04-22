@@ -17,7 +17,8 @@ const formSchema = new SimpleSchema({
   website: String,
   description: String,
   tags: { type: Array, label: 'Tags', optional: false },
-  'tags.$': { type: String, allowedValues: ['Computing', 'Culture', 'Fitness', 'Academic', 'Professional', 'Sports', 'Leisure', 'Political', 'Sorority', 'Fraternity', 'Honorary Society'] },
+  'tags.$': { type: String, allowedValues: ['computing', 'cultural', 'fitness', 'academic', 'professional', 'sports', 'leisure', 'political', 'sorority', 'fraternity', 'honorary society', 'recreational', 'ethnic', 'service', 'religious',
+    'spiritual'] },
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -47,7 +48,7 @@ class CreateClubs extends React.Component {
     return (
       <Grid container centered>
         <Grid.Column>
-          <Header as="h2" textAlign="center">Create Clubs</Header>
+          <Header as="h2" textAlign="center">Create Club</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
               <TextField name='clubName' placeholder={'Name of the Club'}/>
