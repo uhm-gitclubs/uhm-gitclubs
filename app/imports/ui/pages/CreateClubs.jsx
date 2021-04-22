@@ -5,7 +5,7 @@ import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
-import { Stuffs } from '../../api/stuff/Stuff';
+import { Clubs } from '../../api/club/Clubs';
 import MultiSelectField from '../forms/controllers/MultiSelectField';
 
 // Create a schema to specify the structure of the data to appear in the form.
@@ -16,25 +16,8 @@ const formSchema = new SimpleSchema({
   email: String,
   website: String,
   description: String,
-  tags: { // need to use multiselect field for this
-    type: String,
-    allowedValues: ['Computing', 'Culture', 'Fitness', 'Academic', 'Professional', 'Sports', 'Leisure', 'Political', 'Sorority', 'Fraternity', 'Honorary Society'],
-    /*
-  'tags.$': { type: String },
-  'Club Name': String,
-  'Image URL': String,
-  'Club Contact Email': String,
-  'Club Website URL': String,
-  'Club Description': String,
-  'Tags (use multiselect field from bowfolios)': String,
-  name: String,
-  quantity: Number,
-  condition: {
-    type: String,
-    allowedValues: ['excellent', 'good', 'fair', 'poor'],
-    defaultValue: 'good',
-*/
-  },
+  tags: { type: Array, label: 'Tags', optional: false },
+  'tags.$': { type: String, allowedValues: ['Computing', 'Culture', 'Fitness', 'Academic', 'Professional', 'Sports', 'Leisure', 'Political', 'Sorority', 'Fraternity', 'Honorary Society'] },
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -44,9 +27,10 @@ class CreateClubs extends React.Component {
 
   // On submit, insert the data.
   submit(data, formRef) {
-    const { name, quantity, condition } = data;
-    const owner = Meteor.user().username;
-    Stuffs.collection.insert({ name, quantity, condition, owner },
+    const { clubName, image, email, website, description, tags } = data;
+    const joined = Meteor.user().username;
+    const moderator = joined;
+    Clubs.collection.insert({ clubName, image, email, website, description, tags, joined, moderator },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
