@@ -8,7 +8,7 @@ import ClubManage from '../components/ClubManage';
 // import StuffItemAdmin from '../components/StuffItemAdmin';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-class ManageClubsAdmin extends React.Component {
+class ManageAllClubsSiteAdmin extends React.Component {
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
@@ -21,7 +21,7 @@ class ManageClubsAdmin extends React.Component {
     return (
       <Container>
         <Header as="h2" textAlign="center" >
-          <Icon color='green' name='setting'/>Manage Clubs</Header>
+          <Icon color='green' name='settings'/>Manage All clubs</Header>
         <hr/>
         <Card.Group centered>
           {this.props.clubs.map((club, index) => <ClubManage key={index} club={club}/>)}
@@ -32,7 +32,7 @@ class ManageClubsAdmin extends React.Component {
 }
 
 // Require an array of Stuff documents in the props.
-ManageClubsAdmin.propTypes = {
+ManageAllClubsSiteAdmin.propTypes = {
   clubs: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
@@ -40,7 +40,7 @@ ManageClubsAdmin.propTypes = {
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Clubs.moderatorPublicationName);
+  const subscription = Meteor.subscribe(Clubs.adminPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Stuff documents
@@ -49,4 +49,4 @@ export default withTracker(() => {
     clubs,
     ready,
   };
-})(ManageClubsAdmin);
+})(ManageAllClubsSiteAdmin);
