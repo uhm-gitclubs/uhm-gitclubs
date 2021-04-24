@@ -9,6 +9,7 @@ import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import BrowseClubs from '../pages/BrowseClubs';
 import ManageClubsAdmin from '../pages/ManageClubsAdmin';
+import ManageAllClubsSiteAdmin from '../pages/ManageAllClubsSiteAdmin';
 import CreateClubs from '../pages/CreateClubs';
 import EditClubs from '../pages/EditClubs';
 import NotFound from '../pages/NotFound';
@@ -33,7 +34,8 @@ class App extends React.Component {
             <Route path="/browse" component={BrowseClubs}/>
             <AdminProtectedRoute path="/add" component={CreateClubs}/>
             <ProtectedRoute path="/edit/:_id" component={EditClubs}/>
-            <AdminProtectedRoute path="/admin" component={ManageClubsAdmin}/>
+            <AdminProtectedRoute path="/manage" component={ManageClubsAdmin}/>
+            <AdminProtectedRoute path="/admin" component={ManageAllClubsSiteAdmin}/>
             <Route component={NotFound}/>
           </Switch>
           <Footer/>

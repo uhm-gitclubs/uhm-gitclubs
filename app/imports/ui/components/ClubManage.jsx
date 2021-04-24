@@ -11,10 +11,11 @@ class Club extends React.Component {
   state = { open: false, visible: true }
 
   deleteTag(target) {
-    let tags = this.props.club.tags;
-    tags[target] = tags[0];
-    tags.pop();
-    Clubs.collection.update(this.props.club._id, { $set: { 'tags': tags } });
+    const tags = this.props.club.tags;
+    const arr1 = tags.slice(0, target);
+    const arr2 = tags.slice(target + 1, tags.length);
+    const result = arr1.concat(arr2);
+    Clubs.collection.update(this.props.club._id, { $set: { tags: result } });
   }
 
   open = () => this.setState({ open: true })
