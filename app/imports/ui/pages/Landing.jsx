@@ -1,10 +1,12 @@
 import { Meteor } from 'meteor/meteor';
 import React from 'react';
-import { Grid, Image, Header, Icon, Button, Container, Statistic, Card, Label } from 'semantic-ui-react';
+import { Grid, Header, Icon, Button, Container, Statistic, Card } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { _ } from 'meteor/underscore';
 import { Clubs } from '../../api/club/Clubs';
+import { trackUser } from '../../startup/both/Methods';
 import Club from '../components/Club';
 
 /** A simple static component to render some text for the landing page. */
@@ -12,7 +14,7 @@ class Landing extends React.Component {
 
   render() {
     const totalSize = Clubs.collection.find().count();
-    const totalAccount = Meteor.users.find().fetch().length;
+    const totalAccount = Meteor.call(trackUser);
     const gridStyle = { height: '500px' };
     const gridStyle2 = { margin: '120px 0px 100px 0px' };
     const gridStyle3 = {
@@ -59,10 +61,10 @@ class Landing extends React.Component {
             </Grid.Row>
           </Grid>
           <Container>
-            <Statistic.Group widths='four'>
+            <Statistic.Group widths='two'>
               <Statistic>
                 <Statistic.Value>
-                  <Icon name='user' />{totalAccount}
+                  <Icon name='user' />{ totalAccount }
                 </Statistic.Value>
                 <Statistic.Label>Users</Statistic.Label>
               </Statistic>
@@ -70,22 +72,6 @@ class Landing extends React.Component {
               <Statistic>
                 <Statistic.Value>{totalSize}</Statistic.Value>
                 <Statistic.Label>Clubs</Statistic.Label>
-              </Statistic>
-
-              <Statistic>
-                <Statistic.Value>
-                  <Icon name='sticky note outline' />
-                  51,362
-                </Statistic.Value>
-                <Statistic.Label>Notes</Statistic.Label>
-              </Statistic>
-
-              <Statistic>
-                <Statistic.Value>
-                  <Image src='https://react.semantic-ui.com/images/avatar/small/joe.jpg' className='circular inline' />
-                256
-                </Statistic.Value>
-                <Statistic.Label>Online Users</Statistic.Label>
               </Statistic>
             </Statistic.Group>
           </Container>
@@ -95,14 +81,14 @@ class Landing extends React.Component {
             <Grid.Column textAlign='center'>
               <Header as='h2' icon>
                 <Icon name='star outline' size='large'/>
-                Popular Clubs
+                Maybe these clubs?
               </Header>
             </Grid.Column>
           </Grid>
-          <Grid container columns='equal'>
+          <Grid container verticalAlign="middle" relaxed columns={2}>
             <Grid.Row>
               <Card.Group centered>
-                {this.props.clubs.map((club, index) => <Club key={index} club={club}/>)}
+                {_.sample(this.props.clubs, 6).map((club, index) => <Club key={index} club={club}/>)}
               </Card.Group>
             </Grid.Row>
           </Grid>
