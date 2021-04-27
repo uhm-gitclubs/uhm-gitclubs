@@ -10,8 +10,8 @@
         "academic",
         "professional"
       ],
-      "moderator": [],
-      "joined": []
+      "moderator": ["admin@foo.com"],
+      "joined": ["admin@foo.com"]
     },
     {
       "clubName": "Aikido Club at UH",
