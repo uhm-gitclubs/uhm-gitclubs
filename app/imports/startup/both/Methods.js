@@ -1,9 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 
-const trackUser = 'Meteor.user';
+const trackUser = 'Track.user';
 
 Meteor.methods({
-  'Meteor.user'() {
+  'Track.user'() {
     return Meteor.users.find().count();
   },
 });

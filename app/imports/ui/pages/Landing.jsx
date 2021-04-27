@@ -15,6 +15,7 @@ class Landing extends React.Component {
   render() {
     const totalSize = Clubs.collection.find().count();
     const totalAccount = Meteor.call(trackUser);
+    console.log(totalAccount);
     const gridStyle = { height: '500px' };
     const gridStyle2 = { margin: '120px 0px 100px 0px' };
     const gridStyle3 = {
