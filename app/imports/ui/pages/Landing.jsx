@@ -23,6 +23,14 @@ class Landing extends React.Component {
     });
   }
 
+  componentDidMount() {
+    this.interval = setInterval(() => this.updateUser(), 10000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
   render() {
     const totalSize = Clubs.collection.find().count();
     const gridStyle = { height: '500px' };
