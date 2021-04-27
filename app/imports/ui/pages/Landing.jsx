@@ -11,11 +11,20 @@ import Club from '../components/Club';
 
 /** A simple static component to render some text for the landing page. */
 class Landing extends React.Component {
+  constructor() {
+    super();
+    this.state = { users: 0 };
+    this.updateUser = this.updateUser.bind(this);
+  }
+
+  updateUser() {
+    this.setState({
+      users: Meteor.call(trackUser, (error, result) => result),
+    });
+  }
 
   render() {
     const totalSize = Clubs.collection.find().count();
-    const totalAccount = Meteor.call(trackUser);
-    console.log(totalAccount);
     const gridStyle = { height: '500px' };
     const gridStyle2 = { margin: '120px 0px 100px 0px' };
     const gridStyle3 = {
@@ -65,7 +74,7 @@ class Landing extends React.Component {
             <Statistic.Group widths='two'>
               <Statistic>
                 <Statistic.Value>
-                  <Icon name='user' />{ totalAccount }
+                  <Icon name='user' />{ this.state.users }
                 </Statistic.Value>
                 <Statistic.Label>Users</Statistic.Label>
               </Statistic>
