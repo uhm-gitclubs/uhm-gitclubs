@@ -10,14 +10,6 @@ import { Clubs } from '../../api/club/Clubs';
 class Club extends React.Component {
   state = { open: false, visible: true }
 
-  deleteTag(target) {
-    const tags = this.props.club.tags;
-    const arr1 = tags.slice(0, target);
-    const arr2 = tags.slice(target + 1, tags.length);
-    const result = arr1.concat(arr2);
-    Clubs.collection.update(this.props.club._id, { $set: { tags: result } });
-  }
-
   open = () => this.setState({ open: true })
 
   handleConfirm = () => this.setState({ result: swal('Done!', '', 'success'), open: false })
@@ -65,7 +57,6 @@ class Club extends React.Component {
         <Card.Content extra>
           {_.map(this.props.club.tags, (tag, index) => <Label key={index} color='green'>
             {tag}
-            <Icon name='delete' onClick={() => this.deleteTag(index)}/>
           </Label>)}
         </Card.Content>
       </Card>
