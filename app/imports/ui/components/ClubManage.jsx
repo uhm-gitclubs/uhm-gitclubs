@@ -10,6 +10,9 @@ import { Clubs } from '../../api/club/Clubs';
 class Club extends React.Component {
   state = { open: false, visible: true }
 
+  deleteClub() {
+    Clubs.collection.remove(this.props.club._id);
+  }
   open = () => this.setState({ open: true })
 
   handleConfirm = () => this.setState({ result: swal('Done!', '', 'success'), open: false })
@@ -58,6 +61,9 @@ class Club extends React.Component {
           {_.map(this.props.club.tags, (tag, index) => <Label key={index} color='green'>
             {tag}
           </Label>)}
+        </Card.Content>
+        <Card.Content extra>
+          <Button floated='right' color='red' onClick={() => this.deleteClub()}>Delete</Button>
         </Card.Content>
       </Card>
     );
