@@ -26,6 +26,12 @@ class Club extends React.Component {
 
   render() {
     const { visible } = this.state;
+    let webLink;
+    if (this.props.club.website === 'No website available') {
+      webLink = <Button disabled><Icon color='grey' name='world'/>Website</Button>;
+    } else {
+      webLink = <Button basic color='blue' target='_blank' href={this.props.club.website}><Icon color='blue' name='world'/>Website</Button>;
+    }
     return (
       <Card>
         <Image src={this.props.club.image}/>
@@ -45,10 +51,7 @@ class Club extends React.Component {
         </Card.Content>
         <Card.Content extra>
           <div className='ui two buttons'>
-            <Button basic color='blue' target='_blank' href={this.props.club.website}>
-              <Icon color='blue' name='world'/>
-              Website
-            </Button>
+            { webLink }
             <Link to={`/edit/${this.props.club._id}`}>
               <Button basic color='red'>
                 <Icon color='red' name='pencil'/>

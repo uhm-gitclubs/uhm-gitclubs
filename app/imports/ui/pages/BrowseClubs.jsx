@@ -46,7 +46,6 @@ class BrowseClubs extends React.Component {
       (club) => (club.clubName.toLowerCase().indexOf(this.state.search.toLowerCase())) !== -1 ||
           (club.tags.join('\n').toLowerCase().indexOf(this.state.search.toLowerCase())) !== -1,
     );
-
     return (
       <Container>
         <Header as="h2" textAlign="center">

@@ -50,6 +50,12 @@ class Club extends React.Component {
   }
 
   render() {
+    let webLink;
+    if (this.props.club.website === 'No website available') {
+      webLink = <Button disabled><Icon color='grey' name='world'/>Website</Button>;
+    } else {
+      webLink = <Button basic color='blue' target='_blank' href={this.props.club.website}><Icon color='blue' name='world'/>Website</Button>;
+    }
     return (
       <Card>
         <Image src={this.props.club.image}/>
@@ -69,10 +75,7 @@ class Club extends React.Component {
         </Card.Content>
         <Card.Content extra>
           <div className='ui two buttons'>
-            <Button basic color='blue' target='_blank' href={this.props.club.website}>
-              <Icon color='blue' name='world'/>
-              Website
-            </Button>
+            { webLink }
             <Popup
               trigger={<Button disabled={this.isJoined()} basic color='green' onClick={ () => this.joinClub() }>
                 <Icon color='green' name='add circle'/>

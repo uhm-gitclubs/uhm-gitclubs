@@ -23,6 +23,12 @@ class Club extends React.Component {
   handleCancel = () => this.setState({ open: false })
 
   render() {
+    let webLink;
+    if (this.props.club.website === 'No website available') {
+      webLink = <Button disabled><Icon color='grey' name='world'/>Website</Button>;
+    } else {
+      webLink = <Button basic color='blue' target='_blank' href={this.props.club.website}><Icon color='blue' name='world'/>Website</Button>;
+    }
     return (
       <Card>
         <Image src={this.props.club.image}/>
@@ -42,10 +48,7 @@ class Club extends React.Component {
         </Card.Content>
         <Card.Content extra>
           <div className='ui two buttons'>
-            <Button basic color='blue' target='_blank' href={this.props.club.website}>
-              <Icon color='blue' name='world'/>
-                Website
-            </Button>
+            { webLink }
             <Button basic color='red' onClick={this.open}>
               <Icon color='red' name='delete'/>
               Leave
