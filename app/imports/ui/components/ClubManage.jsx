@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image, Label, Icon, Button, Modal, Transition, Confirm } from 'semantic-ui-react';
+import { Card, Image, Label, Icon, Button, Modal, Confirm } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { _ } from 'meteor/underscore';
@@ -14,6 +14,7 @@ class Club extends React.Component {
     Clubs.collection.remove(this.props.club._id);
     this.setState({ result: swal('Done!', '', 'success'), open: false });
   }
+
   open = () => this.setState({ open: true })
 
   handleConfirm = () => this.setState({ result: swal('Done!', '', 'success'), open: false })
@@ -73,6 +74,20 @@ class Club extends React.Component {
           {_.map(this.props.club.tags, (tag, index) => <Label key={index} color='green'>
             {tag}
           </Label>)}
+        </Card.Content>
+        <Card.Content extra>
+          <Button floated='right' color='red' onClick={this.open}>
+            <Icon color='white' name='delete'/>
+            Delete
+          </Button>
+          <Confirm
+            open={this.state.open}
+            content='Are you sure you want to do this?'
+            cancelButton='Never mind'
+            confirmButton="Let's do it"
+            onCancel={this.handleCancel}
+            onConfirm={() => this.deleteClub()}
+          />
         </Card.Content>
       </Card>
     );
