@@ -32,7 +32,7 @@ class ClubsCollection {
     // Define names for publications and subscriptions
     this.nonuserPublicationName = `${this.name}.publication.nonuser`;
     this.userPublicationName = `${this.name}.publication.user`;
-    this.moderatorPublicationName = `${this.name}.publication.clubModerator`;
+    this.moderatorPublicationName = `${this.name}.publication.usermoderator`;
     this.adminPublicationName = `${this.name}.publication.siteAdmin`;
   }
 }

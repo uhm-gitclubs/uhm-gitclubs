@@ -19,6 +19,7 @@
     {
       "email": "jenny@foo.com",
       "password": "changeme",
+      "role": "user",
       "joined": [],
       "moderator": [],
       "interests": []
