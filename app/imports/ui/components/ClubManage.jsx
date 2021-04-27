@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image, Label, Icon, Button } from 'semantic-ui-react';
+import { Card, Image, Label, Icon, Button, Confirm } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { _ } from 'meteor/underscore';
@@ -10,12 +10,9 @@ import { Clubs } from '../../api/club/Clubs';
 class Club extends React.Component {
   state = { open: false, visible: true }
 
-  deleteTag(target) {
-    const tags = this.props.club.tags;
-    const arr1 = tags.slice(0, target);
-    const arr2 = tags.slice(target + 1, tags.length);
-    const result = arr1.concat(arr2);
-    Clubs.collection.update(this.props.club._id, { $set: { tags: result } });
+  deleteClub() {
+    Clubs.collection.remove(this.props.club._id);
+    this.setState({ result: swal('Done!', '', 'success'), open: false });
   }
 
   open = () => this.setState({ open: true })
@@ -48,6 +45,17 @@ class Club extends React.Component {
             <Icon name='user' />
             {this.props.club.joined.length} Members
           </a>
+          <Button size='mini' floated='right' color='red' onClick={this.open}>
+            Delete
+          </Button>
+          <Confirm
+              open={this.state.open}
+              content='Are you sure you want to do this?'
+              cancelButton='Never mind'
+              confirmButton="Let's do it"
+              onCancel={this.handleCancel}
+              onConfirm={() => this.deleteClub()}
+          />
         </Card.Content>
         <Card.Content extra>
           <div className='ui two buttons'>
@@ -63,7 +71,6 @@ class Club extends React.Component {
         <Card.Content extra>
           {_.map(this.props.club.tags, (tag, index) => <Label key={index} color='green'>
             {tag}
-            <Icon name='delete' onClick={() => this.deleteTag(index)}/>
           </Label>)}
         </Card.Content>
         <Button basic size='small' color='green' href={`mailto: ${this.props.club.email}`}>
@@ -71,6 +78,20 @@ class Club extends React.Component {
           Send an Email
         </Button>
 
+        <Card.Content extra>
+          <Button floated='right' color='red' onClick={this.open}>
+            <Icon color='white' name='delete'/>
+            Delete
+          </Button>
+          <Confirm
+            open={this.state.open}
+            content='Are you sure you want to do this?'
+            cancelButton='Never mind'
+            confirmButton="Let's do it"
+            onCancel={this.handleCancel}
+            onConfirm={() => this.deleteClub()}
+          />
+        </Card.Content>
       </Card>
     );
   }

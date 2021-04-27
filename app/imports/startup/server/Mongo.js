@@ -12,7 +12,7 @@ function addClub(data) {
 /**
  * If the loadAssestsFile field in settings.development.json is true, then load the data in private/data.json.
  */
-if (Meteor.settings.loadAssetsFile && (Meteor.users.find().count() < 4)) {
+if ((Meteor.settings.loadAssetsFile) && (Meteor.users.find().count() < 4)) {
   const assetsFileName = 'data.json';
   console.log(`Loading data from private/${assetsFileName}`);
   const jsonData = JSON.parse(Assets.getText(assetsFileName));
