@@ -24,10 +24,17 @@ class BrowseClubs extends React.Component {
   }
 
   // allows enter to be pressed in order to search
-  handleClick(e) {
+  handleKey(e) {
     if (e.key === 'Enter') {
       this.setState({ search: this.state.value });
+      console.log('I pressed enter!');
     }
+    // this.setState({ search: this.state.value });
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+    this.setState({ search: this.state.value });
   }
 
   render() {
@@ -50,10 +57,15 @@ class BrowseClubs extends React.Component {
           fluid
           placeholder='Search for club'
           type='text'
+          action={{
+            labelPosition: 'right',
+            icon: 'search',
+            content: 'Search',
+            onClick: this.handleClick,
+          }}
+          onKeyPress={this.handleKey}
           value={this.state.value}
           onChange={this.updateSearch}
-          onKeyPress={this.handleClick}
-          icon='search'
         />
         <br/>
         {searchedClub.length === 0 ? (<p>No clubs found</p>) :

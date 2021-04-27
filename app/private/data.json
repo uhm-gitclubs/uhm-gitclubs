@@ -330,8 +330,8 @@
       "website": "No website available",
       "description": "No description available. Contact provided email for more information.",
       "tags": [
-        "Leisure",
-        "Recreational"
+        "leisure",
+        "recreational"
       ],
       "moderator": [],
       "joined": []
@@ -391,7 +391,7 @@
     {
       "clubName": "Club Management Association of America ",
       "image": "https://tim.hawaii.edu/wp-content/uploads/2017/12/cmaa-logo_65x65.png",
-      "email": "kyliekb@hawaii.edu \n",
+      "email": "kyliekb@hawaii.edu",
       "website": "https://tim.hawaii.edu/student-portal/student-life/cmaa/",
       "description": "The Club Management Association of America, or CMAA, is a student organization at the University of Hawai’i that allows business and hospitality students to learn more about the private club industry.",
       "tags": [
