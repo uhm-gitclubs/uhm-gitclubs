@@ -49,12 +49,12 @@ class Club extends React.Component {
             Delete
           </Button>
           <Confirm
-              open={this.state.open}
-              content='Are you sure you want to do this?'
-              cancelButton='Never mind'
-              confirmButton="Let's do it"
-              onCancel={this.handleCancel}
-              onConfirm={() => this.deleteClub()}
+            open={this.state.open}
+            content='Are you sure you want to do this?'
+            cancelButton='Never mind'
+            confirmButton="Let's do it"
+            onCancel={this.handleCancel}
+            onConfirm={() => this.deleteClub()}
           />
         </Card.Content>
         <Card.Content extra>
@@ -77,21 +77,6 @@ class Club extends React.Component {
           <Icon color='green' name='mail'/>
           Send an Email
         </Button>
-
-        <Card.Content extra>
-          <Button floated='right' color='red' onClick={this.open}>
-            <Icon color='white' name='delete'/>
-            Delete
-          </Button>
-          <Confirm
-            open={this.state.open}
-            content='Are you sure you want to do this?'
-            cancelButton='Never mind'
-            confirmButton="Let's do it"
-            onCancel={this.handleCancel}
-            onConfirm={() => this.deleteClub()}
-          />
-        </Card.Content>
       </Card>
     );
   }
