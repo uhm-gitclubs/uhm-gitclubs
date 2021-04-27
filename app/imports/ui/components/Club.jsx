@@ -33,20 +33,21 @@ class Club extends React.Component {
       }
       return false;
     } catch (err) {
-      return false;
+      return true;
     }
   }
 
   joinClub() {
-    const user = Meteor.user().username;
-    const joined = this.props.club.joined;
-    if (user === undefined) {
+    try {
+      const user = Meteor.user().username;
+      const joined = this.props.club.joined;
+      if (joined.includes(user) === false) {
+        joined.push(user);
+      }
+      Clubs.collection.update(this.props.club._id, { $set: { joined: joined } });
+    } catch (err) {
       <Link to={/signin/}/>;
     }
-    if (joined.includes(user) === false) {
-      joined.push(user);
-    }
-    Clubs.collection.update(this.props.club._id, { $set: { joined: joined } });
   }
 
   render() {
