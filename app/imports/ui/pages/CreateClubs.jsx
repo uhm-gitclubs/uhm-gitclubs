@@ -12,7 +12,7 @@ import MultiSelectField from '../forms/controllers/MultiSelectField';
 const formSchema = new SimpleSchema({
   clubName: String,
   image: String,
-  // moderator: String,
+  moderator: String,
   email: String,
   website: String,
   description: String,
@@ -53,6 +53,7 @@ class CreateClubs extends React.Component {
             <Segment>
               <TextField name='clubName' placeholder={'Name of the Club'}/>
               <TextField name='image' placeholder={'URL to the image'}/>
+              <TextField name='moderator' placeholde={'Email of Club Moderator'}/>
               <TextField name='email' placeholder={'Primary contact email'}/>
               <TextField name='website' placeholder={'www.example.com'}/>
               <LongTextField name='description' placeholder={'What members can expect from the club'}/>
