@@ -38,6 +38,17 @@ class Club extends React.Component {
             <Icon name='user' />
             {this.props.club.joined.length} Members
           </a>
+          <Button size='mini' floated='right' color='red' onClick={this.open}>
+            Delete
+          </Button>
+          <Confirm
+              open={this.state.open}
+              content='Are you sure you want to do this?'
+              cancelButton='Never mind'
+              confirmButton="Let's do it"
+              onCancel={this.handleCancel}
+              onConfirm={() => this.deleteClub()}
+          />
         </Card.Content>
         <Card.Content extra>
           <div className='ui two buttons'>
@@ -62,20 +73,6 @@ class Club extends React.Component {
           {_.map(this.props.club.tags, (tag, index) => <Label key={index} color='green'>
             {tag}
           </Label>)}
-        </Card.Content>
-        <Card.Content extra>
-          <Button floated='right' color='red' onClick={this.open}>
-            <Icon color='red' name='delete'/>
-            Delete
-          </Button>
-          <Confirm
-              open={this.state.open}
-              content='Are you sure you want to do this?'
-              cancelButton='Never mind'
-              confirmButton="Let's do it"
-              onCancel={this.handleCancel}
-              onConfirm={() => this.deleteClub()}
-          />
         </Card.Content>
       </Card>
     );
