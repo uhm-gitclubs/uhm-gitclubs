@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image, Label, Icon, Button, Modal, Transition } from 'semantic-ui-react';
+import { Card, Image, Label, Icon, Button, Modal, Confirm } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { _ } from 'meteor/underscore';
@@ -12,7 +12,9 @@ class Club extends React.Component {
 
   deleteClub() {
     Clubs.collection.remove(this.props.club._id);
+    this.setState({ result: swal('Done!', '', 'success'), open: false });
   }
+
   open = () => this.setState({ open: true })
 
   handleConfirm = () => this.setState({ result: swal('Done!', '', 'success'), open: false })
@@ -37,6 +39,17 @@ class Club extends React.Component {
             <Icon name='user' />
             {this.props.club.joined.length} Members
           </a>
+          <Button size='mini' floated='right' color='red' onClick={this.open}>
+            Delete
+          </Button>
+          <Confirm
+              open={this.state.open}
+              content='Are you sure you want to do this?'
+              cancelButton='Never mind'
+              confirmButton="Let's do it"
+              onCancel={this.handleCancel}
+              onConfirm={() => this.deleteClub()}
+          />
         </Card.Content>
         <Card.Content extra>
           <div className='ui two buttons'>
@@ -63,7 +76,18 @@ class Club extends React.Component {
           </Label>)}
         </Card.Content>
         <Card.Content extra>
-          <Button floated='right' color='red' onClick={() => this.deleteClub()}>Delete</Button>
+          <Button floated='right' color='red' onClick={this.open}>
+            <Icon color='white' name='delete'/>
+            Delete
+          </Button>
+          <Confirm
+            open={this.state.open}
+            content='Are you sure you want to do this?'
+            cancelButton='Never mind'
+            confirmButton="Let's do it"
+            onCancel={this.handleCancel}
+            onConfirm={() => this.deleteClub()}
+          />
         </Card.Content>
       </Card>
     );
