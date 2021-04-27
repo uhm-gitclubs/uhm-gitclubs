@@ -30,7 +30,7 @@ class MyClubs extends React.Component {
         <Header as="h2" textAlign="center" >
           <Icon color='green' name='search'/>My Clubs</Header>
         <hr/>
-        <Card.Group centered>
+        <Card.Group itemsperrow={3} centered>
           {this.props.clubs.map((club, index) => <MyClub key={index} club={club}/>)}
         </Card.Group>
       </Container>

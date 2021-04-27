@@ -1,13 +1,13 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Card, Image, Label, Icon, Button, Modal, Confirm } from 'semantic-ui-react';
+import { Card, Image, Label, Icon, Button, Confirm } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { _ } from 'meteor/underscore';
 import swal from 'sweetalert';
 import { Clubs } from '../../api/club/Clubs';
 
-/** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
+/** Renders a My Club card. See pages/MyClubs.jsx. */
 class Club extends React.Component {
   state = { open: false }
 
@@ -42,15 +42,10 @@ class Club extends React.Component {
         </Card.Content>
         <Card.Content extra>
           <div className='ui two buttons'>
-            <Modal
-              trigger={<Button basic color='grey' >
-                <Icon color='grey' name='info'/>
-                More Info
-              </Button>}
-              header={this.props.club.clubName}
-              content='Enter more specific details of club here.'
-              actions={[{ key: 'done', content: 'Done', positive: true }]}
-            />
+            <Button basic color='blue' target='_blank' href={this.props.club.website}>
+              <Icon color='blue' name='world'/>
+                Website
+            </Button>
             <Button basic color='red' onClick={this.open}>
               <Icon color='red' name='delete'/>
               Leave
@@ -70,6 +65,11 @@ class Club extends React.Component {
             {tag}
           </Label>)}
         </Card.Content>
+        <Button basic size='small' color='green' href={`mailto: ${this.props.club.email}`}>
+          <Icon color='green' name='mail'/>
+          Send an Email
+        </Button>
+
       </Card>
     );
   }

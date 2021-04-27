@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image, Label, Icon, Button, Modal, Transition } from 'semantic-ui-react';
+import { Card, Image, Label, Icon, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { _ } from 'meteor/underscore';
@@ -45,15 +45,10 @@ class Club extends React.Component {
         </Card.Content>
         <Card.Content extra>
           <div className='ui two buttons'>
-            <Modal
-              trigger={<Button basic color='grey' >
-                <Icon color='grey' name='info'/>
-                  More Info
-              </Button>}
-              header={this.props.club.clubName}
-              content='Enter more specific details of club here.'
-              actions={[{ key: 'done', content: 'Done', positive: true }]}
-            />
+            <Button basic color='blue' target='_blank' href={this.props.club.website}>
+              <Icon color='blue' name='world'/>
+              Website
+            </Button>
             <Link to={`/edit/${this.props.club._id}`}>
               <Button basic color='red'>
                 <Icon color='red' name='pencil'/>
@@ -68,6 +63,11 @@ class Club extends React.Component {
             <Icon name='delete' onClick={() => this.deleteTag(index)}/>
           </Label>)}
         </Card.Content>
+        <Button basic size='small' color='green' href={`mailto: ${this.props.club.email}`}>
+          <Icon color='green' name='mail'/>
+          Send an Email
+        </Button>
+
       </Card>
     );
   }
