@@ -14,21 +14,9 @@ class Landing extends React.Component {
   constructor() {
     super();
     this.state = { users: 0 };
-    this.updateUser = this.updateUser.bind(this);
-  }
-
-  updateUser() {
-    this.setState({
-      users: Meteor.call(trackUser, (error, result) => result),
+    Meteor.call(trackUser, (err, result) => {
+      this.setState({ users: result });
     });
-  }
-
-  componentDidMount() {
-    this.interval = setInterval(() => this.updateUser(), 10000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval);
   }
 
   render() {
