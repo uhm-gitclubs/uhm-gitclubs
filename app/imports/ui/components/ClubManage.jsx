@@ -30,7 +30,7 @@ class Club extends React.Component {
       webLink = <Button basic color='blue' target='_blank' href={this.props.club.website}><Icon color='blue' name='world'/>Website</Button>;
     }
     return (
-      <Card>
+      <Card id={this.props.club.clubName.split(" ").join("-")}>
         <Image src={this.props.club.image}/>
         <Card.Content>
           <Card.Header>{this.props.club.clubName}</Card.Header>
@@ -45,7 +45,7 @@ class Club extends React.Component {
             <Icon name='user' />
             {this.props.club.joined.length} Members
           </a>
-          <Button size='mini' floated='right' color='red' onClick={this.open}>
+          <Button id={this.props.club.clubName.split(" ").join("-")+'-delete'} size='mini' floated='right' color='red' onClick={this.open}>
             Delete
           </Button>
           <Confirm
@@ -61,7 +61,7 @@ class Club extends React.Component {
           <div className='ui two buttons'>
             { webLink }
             <Link to={`/edit/${this.props.club._id}`}>
-              <Button basic color='red'>
+              <Button id={this.props.club.clubName.split(" ").join("-")+'-edit'} basic color='red'>
                 <Icon color='red' name='pencil'/>
                 Edit
               </Button>
