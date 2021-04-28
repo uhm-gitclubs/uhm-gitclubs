@@ -22,7 +22,6 @@ class Club extends React.Component {
   handleCancel = () => this.setState({ open: false })
 
   render() {
-    const { visible } = this.state;
     let webLink;
     if (this.props.club.website === 'No website available') {
       webLink = <Button disabled><Icon color='grey' name='world'/>Website</Button>;
@@ -30,7 +29,7 @@ class Club extends React.Component {
       webLink = <Button basic color='blue' target='_blank' href={this.props.club.website}><Icon color='blue' name='world'/>Website</Button>;
     }
     return (
-      <Card id={this.props.club.clubName.split(" ").join("-")}>
+      <Card id={this.props.club.clubName.split(' ').join('-')}>
         <Image src={this.props.club.image}/>
         <Card.Content>
           <Card.Header>{this.props.club.clubName}</Card.Header>
@@ -45,7 +44,7 @@ class Club extends React.Component {
             <Icon name='user' />
             {this.props.club.joined.length} Members
           </a>
-          <Button id={this.props.club.clubName.split(" ").join("-")+'-delete'} size='mini' floated='right' color='red' onClick={this.open}>
+          <Button id={`${this.props.club.clubName.split(' ').join('-')}-delete`} size='mini' floated='right' color='red' onClick={this.open}>
             Delete
           </Button>
           <Confirm
@@ -61,7 +60,7 @@ class Club extends React.Component {
           <div className='ui two buttons'>
             { webLink }
             <Link to={`/edit/${this.props.club._id}`}>
-              <Button id={this.props.club.clubName.split(" ").join("-")+'-edit'} basic color='red'>
+              <Button id={`${this.props.club.clubName.split(' ').join('-')}-edit`} basic color='red'>
                 <Icon color='red' name='pencil'/>
                 Edit
               </Button>

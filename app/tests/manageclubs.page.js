@@ -13,9 +13,9 @@ class ManageClubsPage {
 
   /** Edits a club that we consider the default club */
   async editClub(testController, club) {
-    this.defaultClub = '#'+club;
+    this.defaultClub = `#${club}`;
     this.defaultClubSelector = Selector(this.defaultClub);
-    this.defaultClubEdit = this.defaultClub+'-edit';
+    this.defaultClubEdit = `${this.defaultClub}-edit`;
     this.defaultClubEditForm = Selector('#edit-form');
     await testController.expect(this.defaultClubSelector.exists).ok();
     await testController.click(this.defaultClubEdit);
@@ -24,7 +24,7 @@ class ManageClubsPage {
 
   /** Delete a club based on the title of the club. */
   async deleteClub(testController, club) {
-    await testController.click('#'+club+'-delete');
+    await testController.click(`#${club}-delete`);
   }
 }
 

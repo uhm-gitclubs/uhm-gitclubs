@@ -13,16 +13,16 @@ class MyClubsPage {
 
   /** Checks that this page displays the club. */
   async clubIsDisplayed(testController, club) {
-    this.defaultClub = '#'+club;
+    this.defaultClub = `#${club}`;
     this.defaultClubSelector = Selector(this.defaultClub);
     await testController.expect(this.defaultClubSelector.exists).ok();
   }
 
   /** Leaves the default club. */
   async leaveClub(testController, club) {
-    this.defaultClub = '#'+club;
+    this.defaultClub = `#${club}`;
     this.defaultClubSelector = Selector(this.defaultClub);
-    this.defaultClubLeave = '#'+club+'-leave';
+    this.defaultClubLeave = `#${club}-leave`;
     await testController.expect(this.defaultClubSelector.exists).ok();
     await testController.click(this.defaultClubLeave);
   }

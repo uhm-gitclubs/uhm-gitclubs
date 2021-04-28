@@ -11,11 +11,11 @@ import { createclubsPage } from './createclubs.page';
 
 /** Credentials for one of the sample users defined in settings.development.json. */
 const credentials = { username: 'john@foo.com', password: 'changeme' };
-const admin = {username: 'admin@foo.com', password: 'changeme'};
+const admin = { username: 'admin@foo.com', password: 'changeme' };
 const club = 'American-Society-of-Civil-Engineers';
 
 fixture('meteor-application-template-react localhost test with default db')
-    .page('http://localhost:3000');
+  .page('http://localhost:3000');
 
 test('Test that landing page shows up', async (testController) => {
   await landingPage.isDisplayed(testController);
@@ -29,7 +29,7 @@ test('Test that signin and signout work', async (testController) => {
   await signoutPage.isDisplayed(testController);
 });
 
-test('Test that join club and leave club works', async(testController) => {
+test('Test that join club and leave club works', async (testController) => {
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoBrowseClubsPage(testController);
@@ -39,9 +39,9 @@ test('Test that join club and leave club works', async(testController) => {
   await myclubsPage.isDisplayed(testController);
   await myclubsPage.clubIsDisplayed(testController, club);
   await myclubsPage.leaveClub(testController, club);
-})
+});
 
-test('Test that edit club works', async(testController) => {
+test('Test that edit club works', async (testController) => {
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, admin.username, admin.password);
   await navBar.gotoBrowseClubsPage(testController);
@@ -50,20 +50,20 @@ test('Test that edit club works', async(testController) => {
   await navBar.gotoManageClubsPage(testController);
   await manageclubsPage.isDisplayed(testController);
   await manageclubsPage.editClub(testController, club);
-})
+});
 
-test('Test that create club works', async(testController) => {
+test('Test that create club works', async (testController) => {
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, admin.username, admin.password);
   await navBar.gotoCreateClubsPage(testController);
   await createclubsPage.isDisplayed(testController);
   await createclubsPage.createClub(testController);
-})
+});
 
-test('Test that delete club works', async(testController) => {
+test('Test that delete club works', async (testController) => {
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, admin.username, admin.password);
   await navBar.gotoManageClubsPage(testController);
   await manageclubsPage.isDisplayed(testController);
   await manageclubsPage.deleteClub(testController, club);
-})
+});

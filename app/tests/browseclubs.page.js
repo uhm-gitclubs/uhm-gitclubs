@@ -13,9 +13,9 @@ class BrowseClubsPage {
 
   /** Joins a club that we consider the default club */
   async joinClub(testController, club) {
-    this.defaultClub = '#'+club;
+    this.defaultClub = `#${club}`;
     this.defaultClubSelector = Selector(this.defaultClub);
-    this.defaultClubJoin = this.defaultClub+'-join';
+    this.defaultClubJoin = `${this.defaultClub}-join`;
     await testController.expect(this.defaultClubSelector.exists).ok();
     await testController.click(this.defaultClubJoin);
   }

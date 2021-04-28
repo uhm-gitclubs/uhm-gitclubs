@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Card, Image, Label, Icon, Button, Popup} from 'semantic-ui-react';
+import { Card, Image, Label, Icon, Button, Popup } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { _ } from 'meteor/underscore';
@@ -58,7 +58,7 @@ class Club extends React.Component {
       webLink = <Button basic color='blue' target='_blank' href={this.props.club.website}><Icon color='blue' name='world'/>Website</Button>;
     }
     return (
-      <Card id={this.props.club.clubName.split(" ").join("-")}>
+      <Card id={this.props.club.clubName.split(' ').join('-')}>
         <Image src={this.props.club.image}/>
         <Card.Content>
           <Card.Header>{this.props.club.clubName}</Card.Header>
@@ -78,7 +78,7 @@ class Club extends React.Component {
           <div className='ui two buttons'>
             { webLink }
             <Popup
-              trigger={<Button id={this.props.club.clubName.split(" ").join("-")+'-join'} disabled={this.isJoined()} basic color='green' onClick={ () => this.joinClub() }>
+              trigger={<Button id={`${this.props.club.clubName.split(' ').join('-')}-join`} disabled={this.isJoined()} basic color='green' onClick={ () => this.joinClub() }>
                 <Icon color='green' name='add circle'/>
                 Join
               </Button>}
