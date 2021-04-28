@@ -20,7 +20,7 @@ Meteor.publish(Clubs.userPublicationName, function () {
 // Moderator-level publication.
 // If logged in, then publish documents owned by this user.
 Meteor.publish(Clubs.moderatorPublicationName, function () {
-  if (this.userId) {
+  if (this.userId && Roles.userIsInRole(this.userId, 'clubModerator')) {
     const moderator = Meteor.users.findOne(this.userId).username;
     return Clubs.collection.find({ moderator: moderator });
   }
