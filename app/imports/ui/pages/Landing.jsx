@@ -12,7 +12,7 @@ class Landing extends React.Component {
       padding: '50px 0px 0px 0px',
     };
     return (
-      <div>
+      <div id='landing-page'>
         <div className="gitclub-landing-background">
           <Grid container verticalAlign="middle" stackable columns={1} style={gridStyle}>
             <Grid.Column textAlign='center'>

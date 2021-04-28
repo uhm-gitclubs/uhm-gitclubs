@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Card, Image, Label, Icon, Button, Popup, Modal } from 'semantic-ui-react';
+import { Card, Image, Label, Icon, Button, Popup} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { _ } from 'meteor/underscore';

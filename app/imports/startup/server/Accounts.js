@@ -18,6 +18,10 @@ function createUser(email, password, role, interests) {
     Roles.createRole(role, { unlessExists: true });
     Roles.addUsersToRoles(userID, 'siteAdmin');
   }
+  if (role === 'clubModerator') {
+    Roles.createRole(role, { unlessExists: true });
+    Roles.addUsersToRoles(userID, 'clubModerator');
+  }
 }
 
 // When running app for first time, pass a settings file to set up a default user account.
