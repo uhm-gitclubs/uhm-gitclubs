@@ -5,7 +5,6 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Clubs } from '../../api/club/Clubs';
 import ClubManage from '../components/ClubManage';
-// import StuffItemAdmin from '../components/StuffItemAdmin';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ManageAllClubsSiteAdmin extends React.Component {
@@ -19,7 +18,7 @@ class ManageAllClubsSiteAdmin extends React.Component {
   renderPage() {
 
     return (
-      <Container>
+      <Container id='manageallclubs-page'>
         <Header as="h2" textAlign="center" >
           <Icon color='green' name='settings'/>Manage All clubs</Header>
         <hr/>

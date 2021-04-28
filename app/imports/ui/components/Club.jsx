@@ -57,7 +57,7 @@ class Club extends React.Component {
       webLink = <Button basic color='blue' target='_blank' href={this.props.club.website}><Icon color='blue' name='world'/>Website</Button>;
     }
     return (
-      <Card>
+      <Card id={this.props.club.clubName.split(" ").join("-")}>
         <Image src={this.props.club.image}/>
         <Card.Content>
           <Card.Header>{this.props.club.clubName}</Card.Header>
@@ -77,7 +77,7 @@ class Club extends React.Component {
           <div className='ui two buttons'>
             { webLink }
             <Popup
-              trigger={<Button disabled={this.isJoined()} basic color='green' onClick={ () => this.joinClub() }>
+              trigger={<Button id={this.props.club.clubName.split(" ").join("-")+'-join'} disabled={this.isJoined()} basic color='green' onClick={ () => this.joinClub() }>
                 <Icon color='green' name='add circle'/>
                 Join
               </Button>}

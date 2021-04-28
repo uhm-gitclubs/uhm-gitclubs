@@ -46,18 +46,18 @@ class CreateClubs extends React.Component {
   render() {
     let fRef = null;
     return (
-      <Grid container centered>
+      <Grid id='createclubs-page' container centered>
         <Grid.Column>
           <Header as="h2" textAlign="center">Create Club</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
-              <TextField name='clubName' placeholder={'Name of the Club'}/>
-              <TextField name='image' placeholder={'URL to the image'}/>
-              <TextField name='email' placeholder={'Primary contact email'}/>
-              <TextField name='website' placeholder={'www.example.com'}/>
-              <LongTextField name='description' placeholder={'What members can expect from the club'}/>
+              <TextField id='create-clubs-form-clubName' name='clubName' placeholder={'Name of the Club'}/>
+              <TextField id='create-clubs-form-image' name='image' placeholder={'URL to the image'}/>
+              <TextField id='create-clubs-form-email' name='email' placeholder={'Primary contact email'}/>
+              <TextField id='create-clubs-form-website' name='website' placeholder={'www.example.com'}/>
+              <LongTextField id='create-clubs-form-description' name='description' placeholder={'What members can expect from the club'}/>
               <MultiSelectField name='tags' placeholder={'Click to open'}/>
-              <SubmitField value='Submit'/>
+              <SubmitField id='create-clubs-form-submit' value='Submit'/>
               <ErrorsField/>
             </Segment>
           </AutoForm>

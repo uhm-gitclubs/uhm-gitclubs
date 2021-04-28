@@ -26,7 +26,7 @@ class MyClubs extends React.Component {
   // Render the page once subscriptions have been received.
   renderPage() {
     return (
-      <Container>
+      <Container id='myclubs-page'>
         <Header as="h2" textAlign="center" >
           <Icon color='green' name='search'/>My Clubs</Header>
         <hr/>
