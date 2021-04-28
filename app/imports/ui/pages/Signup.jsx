@@ -53,7 +53,7 @@ class Signup extends React.Component {
                 <Form.Group widths='equal'>
                   <Form.Input
                     label="First Name"
-                    id="signup-form-fistName"
+                    id="signup-form-firstName"
                     name="firstName"
                     type="firstName"
                     placeholder="First Name"
@@ -94,6 +94,7 @@ class Signup extends React.Component {
                 />
                 <Form.Checkbox
                   inline
+                  id="signup-form-checkbox"
                   label='I agree to the terms and conditions'
                   required
                 />

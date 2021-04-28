@@ -58,7 +58,7 @@ class NavBar {
   }
 
   /** Go to the Manage Clubs Page. */
-  async gotoManageClubsPage(testController) {
+  async gotoManageAllClubsPage(testController) {
     await testController.click('#manageallclubs-navbar');
   }
 }
