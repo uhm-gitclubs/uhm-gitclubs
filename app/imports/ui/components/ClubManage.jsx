@@ -22,7 +22,6 @@ class Club extends React.Component {
   handleCancel = () => this.setState({ open: false })
 
   render() {
-    const { visible } = this.state;
     let webLink;
     if (this.props.club.website === 'No website available') {
       webLink = <Button disabled><Icon color='grey' name='world'/>Website</Button>;
@@ -45,10 +44,10 @@ class Club extends React.Component {
             <Icon name='user' />
             {this.props.club.joined.length} Members
           </a>
-          <Button size='mini' floated='right' color='red' onClick={this.open}>
+          <Button id='delete-button' size='mini' floated='right' color='red' onClick={this.open}>
             Delete
           </Button>
-          <Confirm
+          <Confirm id='confirm'
             open={this.state.open}
             content='Are you sure you want to do this?'
             cancelButton='Never mind'
@@ -61,7 +60,7 @@ class Club extends React.Component {
           <div className='ui two buttons'>
             { webLink }
             <Link to={`/edit/${this.props.club._id}`}>
-              <Button basic color='red'>
+              <Button id='edit-button' basic color='red'>
                 <Icon color='red' name='pencil'/>
                 Edit
               </Button>

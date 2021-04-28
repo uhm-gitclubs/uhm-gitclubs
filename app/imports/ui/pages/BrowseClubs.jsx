@@ -47,32 +47,34 @@ class BrowseClubs extends React.Component {
           (club.tags.join('\n').toLowerCase().indexOf(this.state.search.toLowerCase())) !== -1,
     );
     return (
-      <Container>
-        <Header as="h2" textAlign="center">
-          <Icon color='green' name='search'/>Browse Clubs
-        </Header>
-        <hr/>
-        <Input
-          fluid
-          placeholder='Search for club'
-          type='text'
-          action={{
-            labelPosition: 'right',
-            icon: 'search',
-            content: 'Search',
-            onClick: this.handleClick,
-          }}
-          onKeyPress={this.handleKey}
-          value={this.state.value}
-          onChange={this.updateSearch}
-        />
-        <br/>
-        {searchedClub.length === 0 ? (<p>No clubs found</p>) :
-          (<Card.Group centered>
-            {searchedClub.map((club) => <Club key={club._id} club={club}/>)}
-          </Card.Group>)
-        }
-      </Container>
+      <div id='browse-clubs-page'>
+        <Container>
+          <Header as="h2" textAlign="center">
+            <Icon id='search-button' color='green' name='search'/>Browse Clubs
+          </Header>
+          <hr/>
+          <Input id='search-bar'
+            fluid
+            placeholder='Search for club'
+            type='text'
+            action={{
+              labelPosition: 'right',
+              icon: 'search',
+              content: 'Search',
+              onClick: this.handleClick,
+            }}
+            onKeyPress={this.handleKey}
+            value={this.state.value}
+            onChange={this.updateSearch}
+          />
+          <br/>
+          {searchedClub.length === 0 ? (<p>No clubs found</p>) :
+            (<Card.Group centered>
+              {searchedClub.map((club) => <Club key={club._id} club={club}/>)}
+            </Card.Group>)
+          }
+        </Container>
+      </div>
     );
   }
 }

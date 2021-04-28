@@ -19,7 +19,7 @@ class ManageClubsAdmin extends React.Component {
   renderPage() {
 
     return (
-      <Container>
+      <Container id='manage-clubs-moderator'>
         <Header as="h2" textAlign="center" >
           <Icon color='green' name='setting'/>Manage Clubs</Header>
         <hr/>

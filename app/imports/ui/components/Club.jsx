@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Card, Image, Label, Icon, Button, Popup} from 'semantic-ui-react';
+import { Card, Image, Label, Icon, Button, Popup } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { _ } from 'meteor/underscore';
@@ -57,7 +57,7 @@ class Club extends React.Component {
       webLink = <Button basic color='blue' target='_blank' href={this.props.club.website}><Icon color='blue' name='world'/>Website</Button>;
     }
     return (
-      <Card>
+      <Card id='club-card'>
         <Image src={this.props.club.image}/>
         <Card.Content>
           <Card.Header>{this.props.club.clubName}</Card.Header>

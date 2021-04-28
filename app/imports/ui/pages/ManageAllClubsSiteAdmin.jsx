@@ -19,14 +19,16 @@ class ManageAllClubsSiteAdmin extends React.Component {
   renderPage() {
 
     return (
-      <Container>
-        <Header as="h2" textAlign="center" >
-          <Icon color='green' name='settings'/>Manage All clubs</Header>
-        <hr/>
-        <Card.Group centered>
-          {this.props.clubs.map((club, index) => <ClubManage key={index} club={club}/>)}
-        </Card.Group>
-      </Container>
+      <div id='manage-clubs-admin-page'>
+        <Container>
+          <Header as="h2" textAlign="center" >
+            <Icon color='green' name='settings'/>Manage All clubs</Header>
+          <hr/>
+          <Card.Group centered>
+            {this.props.clubs.map((club, index) => <ClubManage key={index} club={club}/>)}
+          </Card.Group>
+        </Container>
+      </div>
     );
   }
 }
