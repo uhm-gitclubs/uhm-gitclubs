@@ -47,7 +47,7 @@ class BrowseClubs extends React.Component {
           (club.tags.join('\n').toLowerCase().indexOf(this.state.search.toLowerCase())) !== -1,
     );
     return (
-      <Container>
+      <Container id='browseclubs-page'>
         <Header as="h2" textAlign="center">
           <Icon color='green' name='search'/>Browse Clubs
         </Header>

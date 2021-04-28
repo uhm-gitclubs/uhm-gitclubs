@@ -36,6 +36,31 @@ class NavBar {
     await testController.click('#login-dropdown');
     await testController.click('#login-dropdown-sign-up');
   }
+
+  /** Go to the Browse Clubs Page. */
+  async gotoBrowseClubsPage(testController) {
+    await testController.click('#browseclubs-navbar');
+  }
+
+  /** Go to the My Clubs Page. */
+  async gotoMyClubsPage(testController) {
+    await testController.click('#myclubs-navbar');
+  }
+
+  /** Go to the Manage Clubs Page. */
+  async gotoManageClubsPage(testController) {
+    await testController.click('#manageclubs-navbar');
+  }
+
+  /** Go to the Create Clubs Page. */
+  async gotoCreateClubsPage(testController) {
+    await testController.click('#createclubs-navbar');
+  }
+
+  /** Go to the Manage Clubs Page. */
+  async gotoManageClubsPage(testController) {
+    await testController.click('#manageallclubs-navbar');
+  }
 }
 
 export const navBar = new NavBar();
