@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Header, Icon, Card, Loader, Input } from 'semantic-ui-react';
+import { Container, Header, Icon, Card, Loader, Form, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import Club from '../components/Club';
@@ -24,11 +24,8 @@ class BrowseClubs extends React.Component {
   }
 
   // allows enter to be pressed in order to search
-  handleKey(e) {
-    if (e.key === 'Enter') {
-      this.setState({ search: this.state.value });
-      console.log('I pressed enter!');
-    }
+  handleKey() {
+    this.setState({ search: this.state.value });
     // this.setState({ search: this.state.value });
   }
 
@@ -52,20 +49,18 @@ class BrowseClubs extends React.Component {
           <Icon color='green' name='search'/>Browse Clubs
         </Header>
         <hr/>
-        <Input
-          fluid
-          placeholder='Search for club'
-          type='text'
-          action={{
-            labelPosition: 'right',
-            icon: 'search',
-            content: 'Search',
-            onClick: this.handleClick,
-          }}
-          onKeyPress={this.handleKey}
-          value={this.state.value}
-          onChange={this.updateSearch}
-        />
+        <Form onSubmit={this.handleKey}>
+          <Form.Input
+            fluid
+            placeholder='Search for club'
+            type='text'
+            action
+            value={this.state.value}
+            onChange={this.updateSearch}
+          ><input/>
+            <Button onClick={this.handleClick}>Search</Button>
+          </Form.Input>
+        </Form>
         <br/>
         {searchedClub.length === 0 ? (<p>No clubs found</p>) :
           (<Card.Group centered>
