@@ -58,7 +58,7 @@ class BrowseClubs extends React.Component {
             value={this.state.value}
             onChange={this.updateSearch}
           ><input/>
-            <Button onClick={this.handleClick}>Search</Button>
+            <Button icon labelPosition='right' onClick={this.handleClick}>Search<Icon name='search'/></Button>
           </Form.Input>
         </Form>
         <br/>
