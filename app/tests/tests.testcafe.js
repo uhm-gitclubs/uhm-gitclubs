@@ -51,7 +51,7 @@ test('Test that join club and leave club works', async (testController) => {
   await myclubsPage.leaveClub(testController, club);
 });
 
-test.only('Test that edit club works', async (testController) => {
+test('Test that edit club works', async (testController) => {
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, admin.username, admin.password);
   await navBar.gotoBrowseClubsPage(testController);
@@ -70,7 +70,7 @@ test('Test that create club works', async (testController) => {
   await createclubsPage.createClub(testController);
 });
 
-test.only('Test that delete club works', async (testController) => {
+test('Test that delete club works', async (testController) => {
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, admin.username, admin.password);
   await navBar.gotoManageAllClubsPage(testController);

@@ -1,11 +1,9 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Header, Loader, Grid, Icon, Card, Image, Button, Label } from 'semantic-ui-react';
+import { Container, Header, Loader, Icon, Card } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Roles } from 'meteor/alanning:roles';
-import { Stuffs } from '../../api/stuff/Stuff';
-//import StuffItem from '../components/StuffItem';
+// import StuffItem from '../components/StuffItem';
 import { Clubs } from '../../api/club/Clubs.js';
 import MyClub from '../components/MyClub';
 
