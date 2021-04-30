@@ -19,6 +19,24 @@ class BrowseClubs extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  componentDidMount() {
+    this.interval = setInterval(() => this.props.clubs.sort(function (a, b) {
+      const nameA = a.clubName.toUpperCase(); // ignore upper and lowercase
+      const nameB = b.clubName.toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    }), 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
   updateSearch(event) {
     this.setState({ value: event.target.value });
   }
@@ -69,7 +87,7 @@ class BrowseClubs extends React.Component {
         <br/>
         {searchedClub.length === 0 ? (<p>No clubs found</p>) :
           (<Card.Group centered>
-            {searchedClub.map((club) => <Club key={club._id} club={club}/>)}
+            {searchedClub.sort().map((club) => <Club key={club._id} club={club}/>)}
           </Card.Group>)
         }
       </Container>
