@@ -6,7 +6,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { _ } from 'meteor/underscore';
 import { Clubs } from '../../api/club/Clubs';
 
-/** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
+/** Renders a single row in the List Clubs table. See pages/ListClubs.jsx. */
 class Club extends React.Component {
 
   state = { isOpen: false }

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { Clubs } from '../../api/club/Clubs';
 import ClubManage from '../components/ClubManage';
 
-/** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
+/** Renders a table containing all of the Club documents. Use <ClubManage> to render each row. */
 class ManageAllClubsSiteAdmin extends React.Component {
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
@@ -30,7 +30,7 @@ class ManageAllClubsSiteAdmin extends React.Component {
   }
 }
 
-// Require an array of Stuff documents in the props.
+// Require an array of Club documents in the props.
 ManageAllClubsSiteAdmin.propTypes = {
   clubs: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
@@ -38,11 +38,11 @@ ManageAllClubsSiteAdmin.propTypes = {
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
-  // Get access to Stuff documents.
+  // Get access to Club documents.
   const subscription = Meteor.subscribe(Clubs.adminPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready();
-  // Get the Stuff documents
+  // Get the Club documents
   const clubs = Clubs.collection.find({}).fetch();
   return {
     clubs,

@@ -6,9 +6,8 @@ import PropTypes from 'prop-types';
 import swal from 'sweetalert';
 import { Clubs } from '../../api/club/Clubs';
 import MyClub from '../components/MyClub';
-// import StuffItem from '../components/StuffItem';
 
-/** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
+/** Renders a table containing all of the Club documents. Use <MyClub> to render each row. */
 class MyClubs extends React.Component {
   state = { open: false }
 
@@ -38,7 +37,7 @@ class MyClubs extends React.Component {
   }
 }
 
-// Require an array of Stuff documents in the props.
+// Require an array of Club documents in the props.
 MyClubs.propTypes = {
   clubs: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
@@ -46,11 +45,11 @@ MyClubs.propTypes = {
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
-  // Get access to Stuff documents.
+  // Get access to Club documents.
   const subscription = Meteor.subscribe(Clubs.userPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready();
-  // Get the Stuff documents
+  // Get the Club documents
   const clubs = Clubs.collection.find({}).fetch();
   return {
     clubs,

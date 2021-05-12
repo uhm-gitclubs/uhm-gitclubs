@@ -72,7 +72,7 @@ class BrowseClubs extends React.Component {
   }
 }
 
-// Require an array of Stuff documents in the props.
+// Require an array of Club documents in the props.
 BrowseClubs.propTypes = {
   clubs: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
