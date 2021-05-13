@@ -6,7 +6,7 @@ import { _ } from 'meteor/underscore';
 import swal from 'sweetalert';
 import { Clubs } from '../../api/club/Clubs';
 
-/** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
+/** Renders a single row in the List Clubs table. See pages/ListClubs.jsx. */
 class Club extends React.Component {
   state = { open: false, visible: true }
 
